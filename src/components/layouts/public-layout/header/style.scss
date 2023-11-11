@@ -1,0 +1,56 @@
+#pp__header {
+  background-color: aquamarine;
+  padding: 20px;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ph__nav__box {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.ph__nav__list {
+  display: flex;
+  gap: 10px;
+}
+
+.ph__nav__list__item,
+.ph__account__box {
+  a {
+    padding: 3px 5px;
+    border-radius: 6px;
+    color: rgb(28, 25, 25);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    svg {
+      font-size: 35px;
+    }
+    &:hover {
+      background-color: orange;
+      color: aliceblue;
+    }
+  }
+}
+
+.ph__account__list{
+  display: flex;
+  gap: 10px;
+}
+
+@media only screen and (max-width: 1200px) {
+  // .ph__account__box {
+  //   .ph__account__list {
+  //     display: flex;
+  //     flex-direction: column;
+  //   }
+  // }
+}
