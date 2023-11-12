@@ -1,3 +1,5 @@
+"use client"
+
 import { Fragment } from "react"
 
 import CategoryIcon from '@mui/icons-material/Category';
@@ -13,8 +15,12 @@ import Badge from '@mui/material/Badge';
 import NavLink from "@/components/shares/navlink"
 
 import "./style.scss"
+import useFavouriteStore from "@/store/public/favourite";
 
 const PublicHeader = () => {
+
+  const { data: favouriteData } = useFavouriteStore()
+
   return (
     <Fragment>
       <header id="pp__header">
@@ -57,7 +63,7 @@ const PublicHeader = () => {
                 </li>
                 <li className="ph__nav__list__item" >
                   <NavLink href="/favourite">
-                    <Badge badgeContent={4} color="info">
+                    <Badge badgeContent={favouriteData.length} color="info">
                       <FavoriteIcon />
                     </Badge>
                     <p>Sevimlilar</p>
@@ -75,7 +81,7 @@ const PublicHeader = () => {
                 <li className="ph__account__list__item">
                   <NavLink href="/register">
                     <PersonAddAltIcon />
-                    <p>Ruyhatdan utish</p>
+                    <p>Ro'hatdan o'tish</p>
                   </NavLink>
                 </li>
               </ul>

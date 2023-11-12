@@ -4,10 +4,9 @@ import { CssBaseline } from "@mui/material";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import 'react-toastify/dist/ReactToastify.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "../../globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });

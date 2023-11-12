@@ -1,7 +1,10 @@
+import { Fragment } from "react"
 
 const PublicFavouritePage = () => {
   return (
-    <div>PublicFavouritePage</div>
+    <Fragment>
+      
+    </Fragment>
   )
 }
 

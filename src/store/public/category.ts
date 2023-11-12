@@ -8,18 +8,18 @@ interface CategoryStoreType {
   getCategory: () => void;
 }
 
-const useCategoryState = create<CategoryStoreType>()((set, get) => ({
+const useCategoryStore = create<CategoryStoreType>()((set, get) => ({
   loading: false,
   data: [],
   getCategory: async () => {
     try {
       set({ loading: true });
-      const { data } = await request.get<Category[]>("category");
-      set({ data });
+      const { data }: {data: Category[]} = await request.get("category");
+      set({ data: data});
     } finally {
       set({ loading: false });
     }
   },
 }));
 
-export default useCategoryState;
+export default useCategoryStore;

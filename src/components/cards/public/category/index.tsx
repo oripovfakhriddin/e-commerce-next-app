@@ -18,7 +18,7 @@ const PublicCategoryCard = ({ _id, name, image }: Category) => {
           {loading ? (
             <Skeleton variant="rectangular" style={{ width: "100%", height: "100%" }} />
           ) : (
-            <Image priority={loading} src={image.url} alt={name} fill />
+            <Image priority={true} src={image.url} alt={name} fill />
           )}
         </div>
         <div className='category__card__content__box'>

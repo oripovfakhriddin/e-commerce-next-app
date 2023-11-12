@@ -1,16 +1,23 @@
-"use-client"
+
 
 import { Fragment, useEffect } from "react"
 import ProductLatest from "@/components/lists/product-latest"
 import CategoryList from "@/components/lists/category"
 
+import "./style.scss"
+
 const PublicHomePage = () => {
 
   return (
     <Fragment>
-      <h1 style={{textAlign: "center"}} >Barcha kategoriyalar</h1>
-      <CategoryList />
-      <ProductLatest />
+      <section id="latest__products">
+        <h1 style={{ textAlign: "center" }} >Eng oxirgi mahsulotlar</h1>
+        <ProductLatest key="salom" />
+      </section>
+      <section id= "categories">
+        <h1 style={{ textAlign: "center" }} >Barcha mahsulot turlari</h1>
+      </section>
+      {/* <CategoryList /> */}
     </Fragment>
   )
 }

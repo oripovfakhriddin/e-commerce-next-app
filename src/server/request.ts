@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 const request = axios.create({
   baseURL: `${ENDPOINT}api/v1/`,
-  timeout: 10000,
+  timeout: 20000,
   headers: { Authorization: `Bearer ${Cookies.get(TOKEN)}` },
 });
 
@@ -14,7 +14,7 @@ request.interceptors.response.use(
     return response;
   },
   (err) => {
-    toast.error(`sasalomsqada${err.response.data}`);
+    toast.error(`${err.message}`);
     return Promise.reject(err);
   }
 );
