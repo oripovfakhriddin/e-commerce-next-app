@@ -8,6 +8,7 @@ const PublicHomePage = () => {
 
   return (
     <Fragment>
+      <h1 style={{textAlign: "center"}} >Barcha kategoriyalar</h1>
       <CategoryList />
       <ProductLatest />
     </Fragment>

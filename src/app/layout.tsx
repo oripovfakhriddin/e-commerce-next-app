@@ -5,6 +5,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import "../../globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });

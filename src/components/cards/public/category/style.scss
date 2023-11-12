@@ -1,14 +1,11 @@
-.category__card__container{
-  // .card__image__box{
-  //   position: relative;
-  //   max-width: 300px;
-  //   width: 100%;
-  //   height: 200px;
-  // }
+.category__card__container {
+  .card__image__box {
+    width: 100%;
+    height: 450px ;
+    position: relative;
+  }
 
-  .category__card__box{
+  .category__card__content__box{
     padding: 10px;
-    border: 1px solid red;
-    border-radius: 10px;
   }
 }
