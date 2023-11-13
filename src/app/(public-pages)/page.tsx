@@ -12,9 +12,9 @@ const PublicHomePage = () => {
     <Fragment>
       <section id="latest__products">
         <h1 style={{ textAlign: "center" }} >Eng oxirgi mahsulotlar</h1>
-        <ProductLatest key="salom" />
+        <ProductLatest />
       </section>
-      <section id= "categories">
+      <section id="categories">
         <h1 style={{ textAlign: "center" }} >Barcha mahsulot turlari</h1>
       </section>
       {/* <CategoryList /> */}

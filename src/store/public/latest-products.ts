@@ -15,7 +15,9 @@ const useLatestProductsStore = create<LatestProductsStoreType>()(
     getLatestProducts: async () => {
       try {
         set({ loading: true });
-        const { data }: {data: Products[]} = await request.get("last-products");
+        const { data }: { data: Products[] } = await request.get(
+          "last-products"
+        );
         set({ latestProducts: data });
       } finally {
         set({ loading: false });

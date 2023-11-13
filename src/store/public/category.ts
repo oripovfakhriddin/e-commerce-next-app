@@ -5,17 +5,17 @@ import { create } from "zustand";
 interface CategoryStoreType {
   data: Category[];
   loading: boolean;
-  getCategory: () => void;
+  getData: () => void;
 }
 
 const useCategoryStore = create<CategoryStoreType>()((set, get) => ({
   loading: false,
   data: [],
-  getCategory: async () => {
+  getData: async () => {
     try {
       set({ loading: true });
-      const { data }: {data: Category[]} = await request.get("category");
-      set({ data: data});
+      const { data }: { data: Category[] } = await request.get("category");
+      set({ data: data });
     } finally {
       set({ loading: false });
     }

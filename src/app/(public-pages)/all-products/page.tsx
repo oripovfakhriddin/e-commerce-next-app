@@ -1,7 +1,11 @@
+import PublicProductsList from "@/components/lists/product"
+import { Fragment } from "react"
 
 const PublicAllProductsPage = () => {
   return (
-    <div>PublicAllProductsPage</div>
+    <Fragment>
+      <PublicProductsList />
+    </Fragment>
   )
 }
 

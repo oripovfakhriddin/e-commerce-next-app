@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import Image from 'next/image'
 import Products from '@/types/products'
@@ -7,14 +9,24 @@ import { Button } from '@mui/material'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import useFavouriteStore from '@/store/public/favourite'
+import useCartStore from '@/store/public/cart'
 
 const PublicProductsCard = ({ data }: { data: Products }) => {
-  const { data: favouriteData, addToFavourite } = useFavouriteStore()
-  const toggle = favouriteData?.find((el)=>el?._id === data?._id)
+  const { data: favouriteData, addToFavourite } = useFavouriteStore();
+  const { data: cartData, controlProductInCart } = useCartStore()
+  const toggleInFav = favouriteData?.find((el) => el?._id === data?._id)
+  const toggleInCart = cartData?.find((el) => el?._id === data?._id)
+
+  if (toggleInCart) {
+    data = toggleInCart;
+  }
+
+
   return (
     <div className='card__box__container'>
       <div className='product__image__box'>
         <Image src={data?.image?.url ? data?.image?.url : "https://c8.alamy.com/comp/2ATEFRH/mission-failed-text-on-red-round-stamp-2ATEFRH.jpg"} alt={data?.title ? data?.title : "Ma'lumot topilmadi!"} fill />
+        {typeof data?.category === "object" ? <p>{data?.category?.name}</p> : null}
       </div>
       <div className="product__content__box">
         <h3>{data?.title ? data?.title : "Ma'lumot topilmadi!"}</h3>
@@ -30,11 +42,22 @@ const PublicProductsCard = ({ data }: { data: Products }) => {
       </div>
       <div className="product__action__box">
         <div><button className='more'>Ko'proq...</button></div>
-        <div><button className='add__cart'>Savatga qo'shish</button></div>
+        {toggleInCart ?
+          <div className='quantity__box'>
+            <button>+</button>
+            <p>{data?.customQuantity}</p>
+            <button>-</button>
+          </div>
+          :
+          <div>
+            <button onClick={() => { controlProductInCart(data) }} className='add__cart'>Savatga qo'shish</button>
+          </div>
+
+        }
       </div>
       <div className='favourite__button__box'>
         <button onClick={() => { addToFavourite(data) }}>
-          {toggle ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+          {toggleInFav ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </button>
       </div>
     </div>

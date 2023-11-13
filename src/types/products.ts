@@ -1,3 +1,4 @@
+import Category from "./category";
 import Image from "./images";
 
 interface Products {
@@ -9,10 +10,11 @@ interface Products {
   description: string;
   image: Image;
   quantity: number;
-  category: string;
+  category: Category | string;
   createdAt: string;
   updatedAt: string;
   __v: number;
+  customQuantity: number;
 }
 
 export default Products;
