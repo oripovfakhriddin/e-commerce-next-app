@@ -13,7 +13,7 @@ import useCartStore from '@/store/public/cart'
 
 const PublicProductsCard = ({ data }: { data: Products }) => {
   const { data: favouriteData, addToFavourite } = useFavouriteStore();
-  const { data: cartData, controlProductInCart } = useCartStore()
+  const { data: cartData, controlProductInCart, controlQuantityInCart } = useCartStore()
   const toggleInFav = favouriteData?.find((el) => el?._id === data?._id)
   const toggleInCart = cartData?.find((el) => el?._id === data?._id)
 
@@ -44,9 +44,9 @@ const PublicProductsCard = ({ data }: { data: Products }) => {
         <div><button className='more'>Ko'proq...</button></div>
         {toggleInCart ?
           <div className='quantity__box'>
-            <button>+</button>
-            <p>{data?.customQuantity}</p>
-            <button>-</button>
+            <button onClick={() => {controlQuantityInCart("decrement", data)}} className="minus__cart" >-</button>
+            <p className="quantity__count">{data?.customQuantity}</p>
+            <button onClick={() => {controlQuantityInCart("increment", data)}} className="plus__cart">+</button>
           </div>
           :
           <div>

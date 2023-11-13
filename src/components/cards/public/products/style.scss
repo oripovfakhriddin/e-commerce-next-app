@@ -59,14 +59,42 @@
           color: #fff;
           background-color: green;
         }
-      }
+      }      
+    }
+    .quantity__box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
 
-      .quantity__box {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
-        background-color: red;
+      .plus__cart{
+        color: green;
+        border: 1px solid green;
+        &:hover {
+          color: #fff;
+          background-color: green;
+        }
+      }
+      .quantity__count{
+        color: orange;
+        border: 1px solid orange;
+        padding: 8px 15px;
+        text-align: center;
+        border-radius: 6px;
+        transition: 0.5s;
+        font-size: 16px;
+        &:hover {
+          color: #fff;
+          background-color: orange;
+        }
+      }
+      .minus__cart{
+        color: red;
+        border: 1px solid red;
+        &:hover {
+          color: #fff;
+          background-color: red;
+        }
       }
     }
   }
