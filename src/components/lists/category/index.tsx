@@ -7,7 +7,7 @@ import "./style.scss"
 import PublicCategoryCard from '@/components/cards/public/category'
 
 const CategoryList = () => {
-  const { getCategory, loading, data } = useCategoryState()
+  const { getData: getCategory, loading, data } = useCategoryState()
 
 
 
