@@ -1,6 +1,6 @@
 "use client"
 
-import { Fragment } from "react"
+import { Fragment, useState, useEffect } from "react"
 
 import CategoryIcon from '@mui/icons-material/Category';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
@@ -18,9 +18,11 @@ import "./style.scss"
 import useFavouriteStore from "@/store/public/favourite";
 
 const PublicHeader = () => {
-
+  const [favouriteTotal, setFavouriteTotal] = useState(0)
   const { data: favouriteData } = useFavouriteStore()
-
+  useEffect(() => {
+    setFavouriteTotal(favouriteData.length)
+  }, [])
   return (
     <Fragment>
       <header id="pp__header">
@@ -63,7 +65,7 @@ const PublicHeader = () => {
                 </li>
                 <li className="ph__nav__list__item" >
                   <NavLink href="/favourite">
-                    <Badge badgeContent={favouriteData.length} color="info">
+                    <Badge badgeContent={favouriteTotal} color="info">
                       <FavoriteIcon />
                     </Badge>
                     <p>Sevimlilar</p>

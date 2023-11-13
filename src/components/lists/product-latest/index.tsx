@@ -58,7 +58,7 @@ const ProductLatest = () => {
   return (
     <div className="container">
       <Slider {...settings}>
-        {latestProducts?.map((pr) => <div key={pr?._id}><PublicProductsCard data={pr} /></div>)}
+        {latestProducts?.map((pr, index) => <div key={index}><PublicProductsCard data={pr} /></div>)}
       </Slider>
     </div>
   )
