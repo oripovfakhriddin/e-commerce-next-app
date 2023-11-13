@@ -9,7 +9,7 @@ const PublicFavouriteList = () => {
   const { data: favouriteData } = useFavouriteStore()
   return (
     <div className='favourite__row'>
-      {favouriteData?.map((pr) => <div><PublicProductsCard data={pr} /></div>)}
+      {favouriteData?.map((pr, index) => <div key={index}><PublicProductsCard data={pr} /></div>)}
     </div>
   )
 }

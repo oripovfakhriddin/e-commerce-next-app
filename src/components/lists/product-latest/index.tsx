@@ -18,7 +18,7 @@ const ProductLatest = () => {
     slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
-    // autoplay: true,
+    autoplay: true,
     speed: 1000,
     infinite: true,
     autoplaySpeed: 2000,

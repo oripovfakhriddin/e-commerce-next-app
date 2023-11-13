@@ -22,7 +22,7 @@ const PublicHeader = () => {
   const { data: favouriteData } = useFavouriteStore()
   useEffect(() => {
     setFavouriteTotal(favouriteData.length)
-  }, [])
+  }, [favouriteData.length])
   return (
     <Fragment>
       <header id="pp__header">
