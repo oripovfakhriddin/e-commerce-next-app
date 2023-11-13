@@ -87,8 +87,6 @@ const PublicHeader = () => {
                   </NavLink>
                 </li>
               </ul>
-
-
             </div>
           </div>
         </div>
