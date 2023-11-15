@@ -1,0 +1,134 @@
+.cart__card__container {
+  display: flex;
+  gap: 30px;
+  padding: 10px;
+  box-shadow: 0 0 12px #ccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+
+  .cart__card__container__second {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+  .cart__image__box {
+    position: relative;
+    max-width: 200px;
+    height: 200px;
+    width: 100%;
+  }
+
+  .remove__cart {
+    color: red;
+    border-color: red;
+
+    &:hover {
+      background-color: rgb(244, 194, 194);
+    }
+  }
+
+  .cart__card__info__title {
+    opacity: 0.7;
+  }
+
+  .cart__card__price__box {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .cart__card__info__text {
+    color: orange;
+    margin-bottom: 12px;
+  }
+
+  .cart__card__quantity__btn {
+    button {
+      font-size: 16px !important;
+    }
+
+    .minus__cart {
+      color: red;
+      border: 1px solid red;
+
+      &:hover {
+        color: #fff;
+        background-color: red;
+      }
+    }
+
+    .plus__cart {
+      color: green;
+      border: 1px solid green;
+
+      &:hover {
+        color: #fff;
+        background-color: green;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    .cart__card__container__second {
+      flex-direction: column;
+    }
+
+    .cart__image__box {
+      height: 280px;
+    }
+  }
+}
+
+@media only screen and (max-width: 590px) {
+  .cart__card__container {
+    flex-direction: column;
+
+    .cart__card__container__second {
+      .parent {
+        width: 100%;
+
+        .child {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+
+    .cart__card__quantity__btn {
+      text-align: center;
+    }
+
+    .cart__card__price__box {
+      width: 100%;
+      text-align: center;
+      justify-content: space-between;
+    }
+    .cart__image__box {
+      max-width: 500px;
+      width: 100%;
+    }
+  }
+
+  .cart__image__box {
+    height: 280px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .cart__card__container {
+    .cart__card__container__second {
+      .parent {
+        width: 100%;
+
+        .child {
+          width: 100%;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}

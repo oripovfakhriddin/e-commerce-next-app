@@ -31,9 +31,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
     svg {
       font-size: 35px;
     }
+
     &:hover {
       background-color: orange;
       color: aliceblue;
@@ -41,16 +43,22 @@
   }
 }
 
-.ph__account__list{
+.ph__account__list {
   display: flex;
   gap: 10px;
 }
 
 @media only screen and (max-width: 1200px) {
-  // .ph__account__box {
-  //   .ph__account__list {
-  //     display: flex;
-  //     flex-direction: column;
-  //   }
-  // }
+  .ph__account__box {
+    .ph__account__list {
+      display: flex;
+      flex-direction: column;
+      .ph__account__list__item a{
+        justify-content: start;
+        flex-direction: row;
+        gap: 20px;
+        min-width: 189px;
+      }
+    }
+  }
 }

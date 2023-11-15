@@ -9,13 +9,17 @@ interface FavouriteStoreType {
   addToFavourite: (el: Products) => void;
 }
 
+let favouriteLoading = true;
+
 const dataJson =
   typeof window !== "undefined" ? localStorage.getItem(FAVOURITE_CART) : false;
-const datal: Products[] = dataJson ? JSON.parse(dataJson) : [];
+const favouriteData: Products[] = dataJson ? JSON.parse(dataJson) : [];
+
+favouriteLoading = false;
 
 const useFavouriteStore = create<FavouriteStoreType>()((set, get) => ({
-  loading: false,
-  data: datal,
+  loading: favouriteLoading,
+  data: favouriteData,
   addToFavourite: (el) => {
     if (el !== null) {
       const newData = get().data;
@@ -29,9 +33,11 @@ const useFavouriteStore = create<FavouriteStoreType>()((set, get) => ({
         } else {
           localStorage.setItem(FAVOURITE_CART, JSON.stringify(newDatas));
         }
+        toast.error(`${el.title} sevimlilardan o'chirildi`);
         set({ data: newDatas });
       } else {
         newData.push(el);
+        toast.success(`${el.title} sevimlilarga qo'shildi!`);
         localStorage.setItem(FAVOURITE_CART, JSON.stringify(newData));
         set({ data: newData });
       }

@@ -1,0 +1,12 @@
+.all__products__header {
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .category__filter__box {
+    display: flex;
+    align-items: center;
+  }
+}

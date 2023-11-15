@@ -10,34 +10,19 @@ import useCategoryStore from '@/store/public/category';
 
 const PublicProductsList = () => {
 
-  const { total, data: productData, getData: getProduct, setActivePage, setSearch, setCategory } = useProductsStore();
-  const { data: categoryData, getData: getCategory } = useCategoryStore()
+  const { loading: productLoading, total, data: productData, getData: getProduct, setActivePage} = useProductsStore();
+
 
   useEffect(() => {
     getProduct()
-    getCategory()
-  }, [getProduct, getCategory])
+  }, [getProduct])
 
 
 
   return (
     <div>
-      <div>
-        <h1>Barcha mahsulotlar</h1>
-        <input type="text" placeholder='Searching...'
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }} />
-        <select id="category"
-          onChange={(e) => {
-            setCategory(e.target.value);
-          }}>
-          <option value="all">All</option>
-          {categoryData?.map((category) => <option key={category._id} value={category?._id}>{category?.name}</option>)}
-        </select>
-      </div>
-      <div className="product__row">
-        {productData?.map((pr) => <div key={pr?._id}><PublicProductsCard data={pr} /></div>)}
+      <div className="container product__row">
+        {productData?.map((pr) => <div key={pr?._id}><PublicProductsCard data={pr} loading={productLoading} /></div>)}
       </div>
       <div className='pagination__box'>
         <Pagination

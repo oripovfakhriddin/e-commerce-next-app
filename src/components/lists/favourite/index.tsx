@@ -6,10 +6,15 @@ import React from 'react'
 import "./style.scss"
 
 const PublicFavouriteList = () => {
-  const { data: favouriteData } = useFavouriteStore()
+  const { loading: favouriteLoading, data: favouriteData } = useFavouriteStore()
+
+  if (!favouriteData) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className='favourite__row'>
-      {favouriteData?.map((pr, index) => <div key={index}><PublicProductsCard data={pr} /></div>)}
+      {favouriteData?.map((pr, index) => <div key={index}><PublicProductsCard data={pr} loading={favouriteLoading} /></div>)}
     </div>
   )
 }

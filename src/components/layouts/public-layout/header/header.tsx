@@ -16,12 +16,16 @@ import NavLink from "@/components/shares/navlink"
 
 import "./style.scss"
 import useFavouriteStore from "@/store/public/favourite";
+import useCartStore from "@/store/public/cart";
 
 const PublicHeader = () => {
   const [favouriteTotal, setFavouriteTotal] = useState(0)
+  const [cartTotal, setCartTotal] = useState(0)
   const { data: favouriteData } = useFavouriteStore()
+  // const { data: cartData } = useCartStore()
   useEffect(() => {
     setFavouriteTotal(favouriteData.length)
+    // setCartTotal(cartData.length)
   }, [favouriteData.length])
   return (
     <Fragment>
@@ -59,7 +63,9 @@ const PublicHeader = () => {
                 </li>
                 <li className="ph__nav__list__item" >
                   <NavLink href="/cart">
-                    <ShoppingCartIcon />
+                    <Badge badgeContent={cartTotal} color="info">
+                      <ShoppingCartIcon />
+                    </Badge>
                     <p>Savatcha</p>
                   </NavLink>
                 </li>

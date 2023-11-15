@@ -1,0 +1,24 @@
+.payment__box__cart__container {
+  .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .action {
+    margin-top: 20px;
+    max-width: 100%;
+
+    button {
+      border: 1px solid orange;
+      width: 100%;
+      color: white;
+      background-color: orange;
+
+      &:hover {
+        color: orange;
+        background-color: white;
+      }
+    }
+  }
+}

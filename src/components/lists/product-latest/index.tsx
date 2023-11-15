@@ -9,7 +9,7 @@ import SamplePrevArrow from "@/components/shares/sample-prev-arrow";
 import PublicProductsCard from "@/components/cards/public/products";
 const ProductLatest = () => {
 
-  const { latestProducts, loading, getLatestProducts } = useLatestProductsStore();
+  const { latestProducts, loading: latestProductLoading, getLatestProducts } = useLatestProductsStore();
 
   useEffect(() => { getLatestProducts() }, [getLatestProducts])
 
@@ -19,14 +19,11 @@ const ProductLatest = () => {
     slidesToScroll: 4,
     initialSlide: 0,
     autoplay: true,
-    speed: 1000,
+    speed: 3000,
     infinite: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 5000,
     pauseOnHover: true,
-    // centerMode: true,
     centerPadding: "60px",
-    // nextArrow: <SampleNextArrow />,
-    // prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1200,
@@ -56,9 +53,9 @@ const ProductLatest = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container product__latest">
       <Slider {...settings}>
-        {latestProducts?.map((pr, index) => <div key={index}><PublicProductsCard data={pr} /></div>)}
+        {latestProducts?.map((pr, index) => <div key={index}><PublicProductsCard data={pr} loading={latestProductLoading} /></div>)}
       </Slider>
     </div>
   )
