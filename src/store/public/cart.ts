@@ -67,8 +67,8 @@ const useCartStore = create<CartStoreType>()((set, get) => ({
           set({ data: newData });
         } else {
           const newDatas = newData.filter((pr) => pr._id !== el._id);
-          if(newDatas.length === 0){
-            localStorage.removeItem(CARD_CART)
+          if (newDatas.length === 0) {
+            localStorage.removeItem(CARD_CART);
           } else {
             localStorage.setItem(CARD_CART, JSON.stringify(newDatas));
           }
@@ -82,7 +82,7 @@ const useCartStore = create<CartStoreType>()((set, get) => ({
     const newData = get().data.filter((pr) => pr._id !== el._id);
     localStorage.setItem(CARD_CART, JSON.stringify(newData));
     set({ data: newData });
-  }
+  },
 }));
 
 export default useCartStore;
