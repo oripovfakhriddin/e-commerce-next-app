@@ -4,8 +4,6 @@ import useLatestProductsStore from "@/store/public/latest-products"
 import { useEffect } from "react";
 import "./style.scss"
 import Slider from "react-slick";
-import SampleNextArrow from "@/components/shares/sample-next-arrow";
-import SamplePrevArrow from "@/components/shares/sample-prev-arrow";
 import PublicProductsCard from "@/components/cards/public/products";
 const ProductLatest = () => {
 
