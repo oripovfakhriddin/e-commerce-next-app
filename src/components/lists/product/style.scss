@@ -12,15 +12,12 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
-
-
 @media only screen and (max-width: 1200px) {
   .product__row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 
 @media only screen and (max-width: 850px) {
   .product__row {

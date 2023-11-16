@@ -53,7 +53,8 @@
     .ph__account__list {
       display: flex;
       flex-direction: column;
-      .ph__account__list__item a{
+
+      .ph__account__list__item a {
         justify-content: start;
         flex-direction: row;
         gap: 20px;

@@ -4,14 +4,17 @@
   margin: 10px;
   overflow: hidden;
   position: relative;
+
   .product__image__box {
     position: relative;
     width: 100%;
     height: 350px;
-    .product__card__skleton{
+
+    .product__card__skleton {
       width: 100%;
       height: 100%;
     }
+
     p {
       border-radius: 6px;
       position: absolute;
@@ -24,6 +27,7 @@
 
   .product__content__box {
     padding: 10px;
+
     div {
       display: flex;
       justify-content: space-between;
@@ -35,7 +39,9 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
     div {
+
       button,
       a {
         width: 100%;
@@ -48,52 +54,62 @@
         font-size: 16px;
         cursor: pointer;
       }
+
       .more {
         color: orange;
         border: 1px solid orange;
+
         &:hover {
           color: #fff;
           background-color: orange;
         }
       }
+
       .add__cart {
         color: green;
         border: 1px solid green;
+
         &:hover {
           color: #fff;
           background-color: green;
         }
-      }      
+      }
     }
+
     .quantity__box {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
 
-      .plus__cart{
+      .plus__cart {
         color: green;
         border: 1px solid green;
+
         &:hover {
           color: #fff;
           background-color: green;
         }
       }
-      .quantity__count{
+
+      .quantity__count {
         color: orange;
         border: 1px solid orange;
         text-align: center;
         border-radius: 6px;
         transition: 0.5s;
         font-size: 16px;
+
         &:hover {
           color: #fff;
           background-color: orange;
         }
       }
-      .minus__cart{
+
+      .minus__cart {
         color: red;
         border: 1px solid red;
+
         &:hover {
           color: #fff;
           background-color: red;
@@ -101,17 +117,20 @@
       }
     }
   }
+
   .favourite__button__box {
     position: absolute;
     top: 8px;
     right: 8px;
     background-color: #e7e5e5;
     border-radius: 6px;
+
     button {
       background-color: transparent;
       border: none;
       padding: 5px;
       cursor: pointer;
+
       svg {
         font-size: 30px;
         color: orange;

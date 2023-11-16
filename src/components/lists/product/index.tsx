@@ -10,7 +10,7 @@ import useCategoryStore from '@/store/public/category';
 
 const PublicProductsList = () => {
 
-  const { loading: productLoading, total, data: productData, getData: getProduct, setActivePage} = useProductsStore();
+  const { loading: productLoading, total, data: productData, getData: getProduct, setActivePage } = useProductsStore();
 
 
   useEffect(() => {

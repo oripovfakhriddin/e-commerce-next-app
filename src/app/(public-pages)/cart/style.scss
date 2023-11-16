@@ -8,9 +8,9 @@
   grid-template-columns: 2fr 1fr;
   gap: 20px;
 
-  .cart__card__box, 
+  .cart__card__box,
   .cart__payment__box {
-    border:  1px solid hsla(220,4%,48%,.2);
+    border: 1px solid hsla(220, 4%, 48%, .2);
     padding: 16px;
     border-radius: 10px;
   }
@@ -22,18 +22,20 @@
     color: orange;
   }
 
-  .cart__payment__box{
-    .address__info__box{
+  .cart__payment__box {
+    .address__info__box {
       margin-bottom: 10px;
-      p{
-        margin-bottom: 10px; 
+
+      p {
+        margin-bottom: 10px;
         color: #62656A;
         font-size: 18px;
         max-width: 310px;
       }
     }
-    .total__price__payment__box{
-      h2{
+
+    .total__price__payment__box {
+      h2 {
         margin-bottom: 20px;
       }
     }

@@ -15,7 +15,7 @@ const PublicCategoriesFilter = () => {
   useEffect(() => { getCategory() }, [getCategory])
 
   return (
-    <div className = "public__categories__filter__box">
+    <div className="public__categories__filter__box">
       <FormControl className="filter" disabled={loading}>
         <InputLabel id="demo-simple-select-disabled-label">Mahsulot turlari</InputLabel>
         <Select
