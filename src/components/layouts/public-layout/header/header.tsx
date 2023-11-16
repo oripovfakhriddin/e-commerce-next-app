@@ -10,6 +10,8 @@ import InfoIcon from '@mui/icons-material/Info';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import BorderAllIcon from '@mui/icons-material/BorderAll';
+import PersonIcon from '@mui/icons-material/Person';
 import Badge from '@mui/material/Badge';
 
 import NavLink from "@/components/shares/navlink"
@@ -17,12 +19,16 @@ import NavLink from "@/components/shares/navlink"
 import "./style.scss"
 import useFavouriteStore from "@/store/public/favourite";
 import useCartStore from "@/store/public/cart";
+import useAuthStore from "@/store/auth/auth";
 
 const PublicHeader = () => {
   const [favouriteTotal, setFavouriteTotal] = useState(0)
   const [cartTotal, setCartTotal] = useState(0)
   const { data: favouriteData } = useFavouriteStore()
   const { data: cartData } = useCartStore()
+
+  const { data } = useAuthStore()
+
   useEffect(() => {
     setFavouriteTotal(favouriteData.length)
     setCartTotal(cartData.length)
@@ -82,15 +88,30 @@ const PublicHeader = () => {
             <div className="ph__account__box">
               <ul className="ph__account__list">
                 <li className="ph__account__list__item">
-                  <NavLink href="/login">
-                    <LockOpenIcon />
-                    <p>Kirish</p>
-                  </NavLink></li>
+                  {data === null ?
+                    <NavLink href="/login">
+                      <LockOpenIcon />
+                      <p>Kirish</p>
+                    </NavLink>
+                    :
+                    <NavLink href="/account">
+                      <PersonIcon />
+                      <p>{data?.user?.username}</p>
+                    </NavLink>
+                  }
+                </li>
                 <li className="ph__account__list__item">
-                  <NavLink href="/register">
-                    <PersonAddAltIcon />
-                    <p>Ro'hatdan o'tish</p>
-                  </NavLink>
+                  {data === null ?
+                    <NavLink href="/register">
+                      <PersonAddAltIcon />
+                      <p>Ro'hatdan o'tish</p>
+                    </NavLink>
+                    :
+                    <NavLink href="/orders">
+                      <BorderAllIcon />
+                      <p>Buyurtmalarim</p>
+                    </NavLink>
+                  }
                 </li>
               </ul>
             </div>
