@@ -133,3 +133,11 @@
     }
   }
 }
+
+@media only screen and (max-width: 430px) {
+  .cart__card__container {
+    .cart__image__box {
+      height: 200px;
+    }
+  }
+}
