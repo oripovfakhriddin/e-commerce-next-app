@@ -1,7 +1,7 @@
 import React from "react";
 import PublicProductsCartList from "@/components/lists/product-cart";
-import "./style.scss";
 import PublicPaymentList from "@/components/lists/payment";
+import "./style.scss";
 
 const PublicCartPage = () => {
   return (

@@ -9,7 +9,7 @@ import useCartStore from "@/store/public/cart";
 const PublicProductsCartList = () => {
   const { data: cartData } = useCartStore()
   return (
-    <div className='favourite__row'>
+    <div className='product__cart__row'>
       {cartData?.map((pr, index) => <div key={index}><PublicProductsCartCard data={pr} /></div>)}
     </div>
   )
