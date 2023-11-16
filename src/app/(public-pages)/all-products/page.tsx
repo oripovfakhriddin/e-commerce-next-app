@@ -11,7 +11,7 @@ const PublicAllProductsPage = () => {
         <div className="container all__products__container">
           <div className="all__products__header">
             <h1 className="products__header__title">Barcha mahsulotlar</h1>
-            <div className = "category__filter__box">
+            <div className="category__filter__box">
               <PublicCategoriesFilter />
             </div>
           </div>

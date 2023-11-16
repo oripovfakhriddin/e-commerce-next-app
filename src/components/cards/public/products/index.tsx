@@ -45,9 +45,13 @@ const PublicProductsCard = ({ data, loading }: { data: Products } & { loading: b
         <div><Button className='more'>Ko'proq...</Button></div>
         {toggleInCart ?
           <div className='quantity__box'>
-            <Button onClick={() => { controlQuantityInCart("decrement", data) }} className="minus__cart" disabled={loading} >-</Button>
+            <Button onClick={() => { controlQuantityInCart("decrement", data) }} className="minus__cart" disabled={loading} >
+              -
+            </Button>
             <Button className="quantity__count">{data?.customQuantity}</Button>
-            <Button onClick={() => { controlQuantityInCart("increment", data) }} className="plus__cart" disabled={loading} >+</Button>
+            <Button onClick={() => { controlQuantityInCart("increment", data) }} className="plus__cart" disabled={loading} >
+              +
+            </Button>
           </div>
           :
           <div>

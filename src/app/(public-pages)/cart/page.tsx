@@ -23,8 +23,8 @@ const PublicCartPage = () => {
             <hr />
           </div>
           <div className="total__price__payment__box">
-              <h2>Buyurtmangiz:</h2>
-              <PublicPaymentList/>
+            <h2>Buyurtmangiz:</h2>
+            <PublicPaymentList />
           </div>
         </div>
       </div>
