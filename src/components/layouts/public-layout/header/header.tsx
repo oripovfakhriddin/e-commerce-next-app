@@ -22,11 +22,11 @@ const PublicHeader = () => {
   const [favouriteTotal, setFavouriteTotal] = useState(0)
   const [cartTotal, setCartTotal] = useState(0)
   const { data: favouriteData } = useFavouriteStore()
-  // const { data: cartData } = useCartStore()
+  const { data: cartData } = useCartStore()
   useEffect(() => {
     setFavouriteTotal(favouriteData.length)
-    // setCartTotal(cartData.length)
-  }, [favouriteData.length])
+    setCartTotal(cartData.length)
+  }, [favouriteData.length, cartData.length])
   return (
     <Fragment>
       <header id="pp__header">

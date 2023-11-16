@@ -4,6 +4,7 @@ import { CssBaseline } from "@mui/material";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import 'react-multi-carousel/lib/styles.css';
 import 'react-toastify/dist/ReactToastify.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

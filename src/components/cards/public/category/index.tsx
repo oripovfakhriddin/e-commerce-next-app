@@ -6,35 +6,21 @@ import React from 'react'
 import useCategoryState from '@/store/public/category';
 
 import "./style.scss"
+import Link from 'next/link';
 
-const PublicCategoryCard = ({ _id, name, image }: Category) => {
-
-  const { loading } = useCategoryState()
+const PublicCategoryCard = ({ data, loading }: { data: Category } & { loading: boolean }) => {
 
   return (
-    <div className='category__card__container'>
-      <Box key={_id} >
-        <div className='card__image__box'>
-          {loading ? (
-            <Skeleton variant="rectangular" style={{ width: "100%", height: "100%" }} />
-          ) : (
-            <Image priority={true} src={image.url} alt={name} fill />
-          )}
+    <Link style={{ width: "100%" }} href={data?._id}>
+      <div className='category__card__container'>
+        <div className="category__card__image__box">
+          {loading ? <Skeleton className="category__card__skleton" variant="rectangular" /> : <Image src={data?.image?.url} alt={data?.name} fill />}
         </div>
-        <div className='category__card__content__box'>
-          {loading ? (
-            <Box sx={{ pt: 0.5 }}>
-              <Skeleton />
-              <Skeleton width="60%" />
-            </Box>
-          ) : (
-            <Box sx={{ pr: 2 }}>
-              <h3>{name}</h3>
-            </Box>
-          )}
+        <div className="category__card__content__box">
+          {loading ? <Skeleton className="category__text__skleton" /> : <h3>{data?.name}</h3>}
         </div>
-      </Box>
-    </div>
+      </div>
+    </Link>
   )
 }
 

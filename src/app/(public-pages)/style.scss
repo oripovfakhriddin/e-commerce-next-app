@@ -1,7 +1,34 @@
 #latest__products {
-  margin-top: 110px;
+  margin-top: 50px;
+  min-height: 300px;
+  .product__latest__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .product__latest__container button {
+    display: none;
+  }
 }
 
 #categories {
   margin-top: 50px;
+  margin-bottom: 50px;
+  min-height: 300px;
+  .categories__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .categories__container button {
+    display: none;
+  }
 }
