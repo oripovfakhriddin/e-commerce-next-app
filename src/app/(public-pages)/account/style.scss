@@ -1,5 +1,39 @@
-.account__image__box {
-  width: 200px;
-  height: 200px;
-  position: relative;
+.account__box,
+.account__change__box {
+  min-height: 200px;
+}
+
+.account__box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.account__change__box {
+  .form__change {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .account__box {
+    div {
+      flex-direction: column;
+    }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .account__box {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+  }
 }
