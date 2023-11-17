@@ -1,22 +1,21 @@
-"use client"
+import { Fragment } from "react"
+import { Metadata } from 'next';
+import LoginForm from "@/components/forms/login";
 
-import useAuthStore from "@/store/auth/auth"
-import { useRouter } from "next/navigation";
-import { useEffect } from "react"
+export const metadata: Metadata = {
+  title: "VODIY PARFUM | KIRISH",
+  description:
+    "Vodiy perfume is an e-commerce site developed by Oripov Fakhriddin, a softwaree engineer based in Tashkent, Uzbekistan",
+};
 
 const LoginPage = () => {
-  const router = useRouter();
-  const { login } = useAuthStore()
-  const data = {
-    username: 'abdulaziz',
-    password: '1234567'
-  }
-  useEffect(() => {
-    login(data, router)
-  }, [login])
 
   return (
-    <div>LoginPage</div>
+    <Fragment>
+      <section>
+        <LoginForm />
+      </section>
+    </Fragment>
   )
 }
 

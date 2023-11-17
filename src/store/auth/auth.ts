@@ -7,13 +7,17 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 import ROLES from "@/types/roles";
 
 
-interface LoginType {
+export interface LoginType {
   username: string;
   password: string;
 }
 
-interface RegisterType {
-
+export interface RegisterType {
+  firstName: string;
+  lastName: string;
+  username: string;
+  phoneNumber: string;
+  password: string;
 }
 
 interface LoginStoreType {
@@ -21,8 +25,8 @@ interface LoginStoreType {
   loading: boolean;
   isAuthenticated: boolean;
   data: User | null;
-  login: (loginData: LoginType, router: AppRouterInstance) => void;
-  register: (registerData: RegisterType) => void;
+  login: (loginData: LoginType | null, router: AppRouterInstance) => void;
+  register: (registerData: RegisterType, router: AppRouterInstance) => void;
 }
 
 const dataJson =
@@ -52,7 +56,7 @@ const useAuthStore = create<LoginStoreType>()((set, get) => ({
       set({ loading: false })
     }
   },
-  register: async (registerData) => {
+  register: async (registerData, router) => {
 
   }
 }))
