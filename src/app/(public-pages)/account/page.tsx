@@ -1,15 +1,16 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import PersonPinIcon from '@mui/icons-material/PersonPin';
-import EditIcon from '@mui/icons-material/Edit';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import PersonPinIcon from "@mui/icons-material/PersonPin";
+import EditIcon from "@mui/icons-material/Edit";
 import useAuthStore from "@/store/auth/auth";
-import "./style.scss"
+import "./style.scss";
+import Image from "next/image";
 
 // import { Metadata } from "next";
 // export const metadata: Metadata = {
@@ -17,7 +18,6 @@ import "./style.scss"
 //   description:
 //     "VODIY PARFUME internet do'konidagi hisobim!",
 // };
-
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -48,43 +48,54 @@ function CustomTabPanel(props: TabPanelProps) {
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
 const PublicAccountPage = () => {
   const [value, setValue] = useState(0);
-  const router = useRouter()
+  const router = useRouter();
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-  const { data, token, isAuthenticated, loading } = useAuthStore()
+  const { data, token, isAuthenticated, loading } = useAuthStore();
   useEffect(() => {
     if (!isAuthenticated) {
-      router.push("/login")
+      router.push("/login");
     }
-  }, [isAuthenticated])
-
-
+  }, [isAuthenticated]);
 
   return (
-    <div>
-      <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="account data" centered>
-            <Tab icon={<PersonPinIcon />} label="Ma'lumot" {...a11yProps(0)} />
-            <Tab icon={<EditIcon />} label="Tahrirlash" {...a11yProps(1)} />
-          </Tabs>
-        </Box>
-        <CustomTabPanel value={value} index={0}>
-          {data?.user?.firstName}
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}>
-          {data?.user?.lastName}
-        </CustomTabPanel>
-      </Box>
-    </div>
-  )
-}
+    <section id="account">
+      <div className="container">
+        <Box sx={{ width: "100%" }}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="account data"
+              centered
+            >
+              <Tab
+                icon={<PersonPinIcon />}
+                label="Ma'lumot"
+                {...a11yProps(0)}
+              />
+              <Tab icon={<EditIcon />} label="Tahrirlash" {...a11yProps(1)} />
+            </Tabs>
+          </Box>
+          <CustomTabPanel value={value} index={0}>
+            <div className = "account__box">
 
-export default PublicAccountPage
+            </div>
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={1}>
+            
+          </CustomTabPanel>
+        </Box>
+      </div>
+    </section>
+  );
+};
+
+export default PublicAccountPage;

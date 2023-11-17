@@ -1,8 +1,15 @@
-import PublicProductsList from "@/components/lists/product"
-import { Fragment } from "react"
+import PublicProductsList from "@/components/lists/product";
+import { Fragment } from "react";
 
-import "./style.scss"
-import PublicCategoriesFilter from "@/components/filter/categories-filter"
+import "./style.scss";
+import PublicCategoriesFilter from "@/components/filter/categories-filter";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "VODIY PARFUM | BARCHA MAHSULOTLAR",
+  description:
+    "Vodiy perfume is an e-commerce site developed by Oripov Fakhriddin, a softwaree engineer based in Tashkent, Uzbekistan",
+};
 
 const PublicAllProductsPage = () => {
   return (
@@ -19,7 +26,7 @@ const PublicAllProductsPage = () => {
         </div>
       </section>
     </Fragment>
-  )
-}
+  );
+};
 
-export default PublicAllProductsPage
+export default PublicAllProductsPage;
