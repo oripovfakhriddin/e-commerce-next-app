@@ -2,7 +2,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import "./style.scss";
 import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
 import useAuthStore, { RegisterType } from "@/store/auth/auth";
@@ -11,6 +10,7 @@ import { TOKEN } from "@/constants";
 import request from "@/server/request";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Link from "next/link";
+import "./style.scss";
 const RegisterForm = () => {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
