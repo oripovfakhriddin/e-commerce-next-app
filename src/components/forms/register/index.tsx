@@ -1,27 +1,24 @@
 "use client";
-
-import useAuthStore, { LoginType } from "@/store/auth/auth";
-import { useRouter } from "next/navigation";
-import { useEffect, Fragment, useState } from "react";
-import { useForm } from "react-hook-form";
-
-import TextField from "@mui/material/TextField";
+import React, { Fragment, useEffect, useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import IconButton from "@mui/material/IconButton";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
+import { useRouter } from "next/navigation";
+import useAuthStore, { RegisterType } from "@/store/auth/auth";
+import { useForm } from "react-hook-form";
 import { TOKEN } from "@/constants";
-import InputAdornment from "@mui/material/InputAdornment";
 import request from "@/server/request";
-import "./style.scss";
 import LoadingButton from "@mui/lab/LoadingButton";
 import Link from "next/link";
-
-const LoginForm = () => {
+import "./style.scss";
+const RegisterForm = () => {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [dataUser, setDataUser] = useState<LoginType | null>(null);
-  const { loading, login } = useAuthStore();
+  const [dataUser, setDataUser] = useState<RegisterType | null>(null);
+  const { loading, userRegister } = useAuthStore();
+
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
@@ -32,7 +29,7 @@ const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginType>();
+  } = useForm<RegisterType>();
 
   const onSubmit = handleSubmit((data) => {
     setDataUser(data);
@@ -41,13 +38,65 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (dataUser !== null) {
-      login(dataUser, router);
+      userRegister(dataUser, router);
     }
-  }, [login, dataUser, router]);
+  }, [userRegister, dataUser, router]);
 
   return (
     <Fragment>
-      <form className="login__form" onSubmit={onSubmit}>
+      <form className="register__form" onSubmit={onSubmit}>
+        <TextField
+          {...register("firstName", {
+            required: "Ism kiritilishi shart",
+            minLength: {
+              value: 3,
+              message: "Ism 3 belgidan ko'p bo'lishi shart",
+            },
+            pattern: {
+              value: /^[A-Za-z]+$/,
+              message: "Faqatgina harflarni kiriting",
+            },
+          })}
+          error={Boolean(errors?.firstName)}
+          helperText={errors?.firstName?.message}
+          aria-invalid={false}
+          label="Ismingiz"
+          autoComplete="firstName"
+        />
+        <TextField
+          {...register("lastName", {
+            required: "Familya kiritilishi shart",
+            minLength: {
+              value: 3,
+              message: "Familya 3 belgidan ko'p bo'lishi shart",
+            },
+            pattern: {
+              value: /^[A-Za-z]+$/,
+              message: "Faqatgina harflarni kiriting",
+            },
+          })}
+          error={Boolean(errors?.lastName)}
+          helperText={errors?.lastName?.message}
+          aria-invalid={false}
+          label="Familyangiz"
+          autoComplete="lastName"
+        />
+        <TextField
+          {...register("phoneNumber", {
+            required: "Telefon raqam kiritilishi shart",
+            pattern: {
+              value: /^\+998[0-9]{9}$/,
+              message:
+                "O'zbekiston raqamlari uchun to'g'ri formatda kiritilishi shart",
+            },
+          })}
+          defaultValue="+998"
+          error={Boolean(errors?.phoneNumber)}
+          helperText={errors?.phoneNumber?.message}
+          aria-invalid={false}
+          label="Telefon raqamingiz"
+          autoComplete="phoneNumber"
+        />
         <TextField
           {...register("username", {
             required: "Foydalanuvchi nomi kiritilishi shart",
@@ -100,11 +149,10 @@ const LoginForm = () => {
           variant="outlined"
           color="warning"
         >
-          <span>Kirish</span>
+          <span>Ro'yhatdan o'tish</span>
         </LoadingButton>
-
-        <div className="login__navigation">
-          <Link href="/register">Ro'yhatdan o'tish</Link>
+        <div className="register__navigation">
+          <Link href="/login">Kirish</Link>
           <Link href="/">Bosh sahifaga qaytish</Link>
         </div>
       </form>
@@ -112,4 +160,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

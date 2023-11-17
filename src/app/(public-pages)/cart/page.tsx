@@ -1,7 +1,14 @@
 import React from "react";
 import PublicProductsCartList from "@/components/lists/product-cart";
 import PublicPaymentList from "@/components/lists/payment";
+import { Metadata } from "next";
 import "./style.scss";
+
+export const metadata: Metadata = {
+  title: "VODIY PARFUM | SAVATCHA",
+  description:
+    "Vodiy perfume is an e-commerce site developed by Oripov Fakhriddin, a softwaree engineer based in Tashkent, Uzbekistan",
+};
 
 const PublicCartPage = () => {
   return (

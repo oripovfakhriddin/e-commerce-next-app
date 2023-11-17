@@ -26,7 +26,7 @@ interface LoginStoreType {
   isAuthenticated: boolean;
   data: User | null;
   login: (loginData: LoginType | null, router: AppRouterInstance) => void;
-  register: (registerData: RegisterType, router: AppRouterInstance) => void;
+  userRegister: (registerData: RegisterType, router: AppRouterInstance) => void;
 }
 
 const dataJson =
@@ -36,7 +36,7 @@ const dataUser: User = dataJson ? JSON.parse(dataJson) : null;
 const useAuthStore = create<LoginStoreType>()((set, get) => ({
   token: dataUser?.accesstoken || null,
   loading: false,
-  isAuthenticated: Boolean(dataUser),
+  isAuthenticated: Boolean(Cookies.get(USER_ID)),
   data: dataUser,
   login: async (loginData, router) => {
     try {
@@ -56,8 +56,14 @@ const useAuthStore = create<LoginStoreType>()((set, get) => ({
       set({ loading: false })
     }
   },
-  register: async (registerData, router) => {
-
+  userRegister: async (registerData, router) => {
+    try { 
+      set({ loading: true })
+      const { data } = await request.post<User>("auth/register", registerData);
+      router.push("/login")
+    } finally {
+      set({ loading: false })
+    }
   }
 }))
 

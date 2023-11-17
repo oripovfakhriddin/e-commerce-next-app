@@ -27,12 +27,13 @@ const PublicHeader = () => {
   const { data: favouriteData } = useFavouriteStore()
   const { data: cartData } = useCartStore()
 
-  const { data } = useAuthStore()
+  const { data, isAuthenticated } = useAuthStore()
 
   useEffect(() => {
     setFavouriteTotal(favouriteData.length)
     setCartTotal(cartData.length)
   }, [favouriteData.length, cartData.length])
+
   return (
     <Fragment>
       <header id="pp__header">
@@ -88,7 +89,7 @@ const PublicHeader = () => {
             <div className="ph__account__box">
               <ul className="ph__account__list">
                 <li className="ph__account__list__item">
-                  {data === null ?
+                  {  !isAuthenticated ?
                     <NavLink href="/login">
                       <LockOpenIcon />
                       <p>Kirish</p>
@@ -101,7 +102,7 @@ const PublicHeader = () => {
                   }
                 </li>
                 <li className="ph__account__list__item">
-                  {data === null ?
+                  { !isAuthenticated ?
                     <NavLink href="/register">
                       <PersonAddAltIcon />
                       <p>Ro'hatdan o'tish</p>
