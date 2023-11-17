@@ -4,7 +4,7 @@ import "./style.scss";
 export const metadata: Metadata = {
   title: "VODIY PARFUM | HAQIDA",
   description:
-    "Vodiy perfume is an e-commerce site developed by Oripov Fakhriddin, a softwaree engineer based in Tashkent, Uzbekistan",
+    "VODIY PARFUM SAYTI HAQIDA, USHBU SAYTNI ORIPOV FAXRIDDIN TASHKIL ETILDI",
 };
 
 const PublicAboutPage = () => {
