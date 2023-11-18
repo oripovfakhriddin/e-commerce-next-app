@@ -8,14 +8,17 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import EditIcon from "@mui/icons-material/Edit";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 import useAuthStore, {
   RegisterType,
   UserInformationType,
+  UserPasswordType,
 } from "@/store/auth/auth";
 import "./style.scss";
-import { TextField } from "@mui/material";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useForm } from "react-hook-form";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 // import { Metadata } from "next";
 // export const metadata: Metadata = {
@@ -59,10 +62,10 @@ function a11yProps(index: number) {
 
 const PublicAccountPage = () => {
   const [valueTab, setValueTab] = useState(0);
-
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [dataUser, setDataUser] = useState<UserInformationType | null>(null);
+  const [dataPass, setDataPass] = useState<UserPasswordType | null>(null);
 
   const {
     register,
@@ -71,17 +74,38 @@ const PublicAccountPage = () => {
     formState: { errors },
   } = useForm<UserInformationType>();
 
+  const {
+    register: registerPass,
+    handleSubmit: handleSubmitPass,
+    formState: { errors: errorsPass },
+  } = useForm<UserPasswordType>();
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
+
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValueTab(newValue);
   };
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
     setDataUser(data);
   });
 
-  const { data, isAuthenticated, loading, changeUserInformation } =
-    useAuthStore();
+  const onSubmitPassword = handleSubmitPass((data) => {
+    setDataPass(data);
+  });
+
+  const {
+    data,
+    isAuthenticated,
+    loading,
+    changeUserInformation,
+    changeUserPassword,
+  } = useAuthStore();
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -91,7 +115,17 @@ const PublicAccountPage = () => {
     if (dataUser !== null) {
       changeUserInformation(dataUser, router);
     }
-  }, [isAuthenticated, changeUserInformation, dataUser]);
+    if (dataPass !== null) {
+      changeUserPassword(dataPass, router);
+    }
+  }, [
+    isAuthenticated,
+    changeUserInformation,
+    changeUserPassword,
+    dataPass,
+    dataUser,
+    router,
+  ]);
 
   return (
     <section id="account">
@@ -99,6 +133,7 @@ const PublicAccountPage = () => {
         <Box sx={{ width: "100%" }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <Tabs
+              className="tabs__list"
               value={valueTab}
               onChange={handleChange}
               aria-label="account data"
@@ -109,10 +144,20 @@ const PublicAccountPage = () => {
                 label="Ma'lumot"
                 {...a11yProps(0)}
               />
-              <Tab icon={<EditIcon />} label="Tahrirlash" {...a11yProps(1)} />
+              <Tab
+                icon={<BorderColorIcon />}
+                label="Tahrirlash"
+                {...a11yProps(1)}
+              />
+              <Tab
+                icon={<EditIcon />}
+                label="Parolni o'zgartirish"
+                {...a11yProps(2)}
+              />
             </Tabs>
           </Box>
           <CustomTabPanel value={valueTab} index={0}>
+            <h1 className="tabs__title">Ma'lumotlarim</h1>
             <div className="account__box">
               <div>
                 <p>Ismingiz: </p>
@@ -135,6 +180,7 @@ const PublicAccountPage = () => {
           <CustomTabPanel value={valueTab} index={1}>
             <div className="account__change__box">
               <Fragment>
+                <h1>Ma'lumotlarimni o'zgartirish</h1>
                 <form className="form__change" onSubmit={onSubmit}>
                   <TextField
                     {...register("firstName", {
@@ -214,6 +260,94 @@ const PublicAccountPage = () => {
                     color="warning"
                   >
                     <span>Tasdiqlash</span>
+                  </LoadingButton>
+                </form>
+              </Fragment>
+            </div>
+          </CustomTabPanel>
+          <CustomTabPanel value={valueTab} index={2}>
+            <div className="account__change__password__box">
+              <Fragment>
+                <h1>Parolni o'zgartirish</h1>
+                <form
+                  className="password__change__form"
+                  onSubmit={onSubmitPassword}
+                >
+                  <TextField
+                    {...registerPass("currentPassword", {
+                      required: "Parol kiritilishi shart!",
+                      minLength: {
+                        value: 6,
+                        message: "Parol 6 belgidan ko'p bo'lishi shart",
+                      },
+                      maxLength: {
+                        value: 12,
+                        message: "Parol 12 belgidan kam bo'lishi shart",
+                      },
+                    })}
+                    type={showPassword ? "text" : "password"}
+                    error={Boolean(errorsPass?.currentPassword)}
+                    helperText={errorsPass?.currentPassword?.message}
+                    label="Oldingi parol"
+                    autoComplete="current-password"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  <TextField
+                    {...registerPass("newPassword", {
+                      required: "Parol kiritilishi shart!",
+                      minLength: {
+                        value: 6,
+                        message: "Parol 6 belgidan ko'p bo'lishi shart",
+                      },
+                      maxLength: {
+                        value: 12,
+                        message: "Parol 12 belgidan kam bo'lishi shart",
+                      },
+                    })}
+                    error={Boolean(errorsPass?.newPassword)}
+                    helperText={errorsPass?.newPassword?.message}
+                    aria-invalid={false}
+                    label="Yangi parol"
+                    autoComplete="newPassword"
+                  />
+                  <TextField
+                    {...registerPass("confirmPassword", {
+                      required: "Parol kiritilishi shart!",
+                      minLength: {
+                        value: 6,
+                        message: "Parol 6 belgidan ko'p bo'lishi shart",
+                      },
+                      maxLength: {
+                        value: 12,
+                        message: "Parol 12 belgidan kam bo'lishi shart",
+                      },
+                    })}
+                    error={Boolean(errorsPass?.confirmPassword)}
+                    helperText={errorsPass?.confirmPassword?.message}
+                    aria-invalid={false}
+                    label="Qaytadan kiriting"
+                    autoComplete="confirmPassword"
+                  />
+                  <LoadingButton
+                    type="submit"
+                    loading={loading}
+                    loadingIndicator="Kuting..."
+                    variant="outlined"
+                    color="warning"
+                  >
+                    <span>Tadiqlash</span>
                   </LoadingButton>
                 </form>
               </Fragment>

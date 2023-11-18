@@ -14,7 +14,11 @@ request.interceptors.response.use(
     return response;
   },
   (err) => {
-    toast.error(`${err.message}`);
+    if (err?.message === "Network Error") {
+      toast.error(`${err?.message}`);
+    } else {
+      toast.error(`${err?.response?.data?.msg}`);
+    }
     return Promise.reject(err);
   }
 );

@@ -12,3 +12,12 @@
     justify-content: space-between;
   }
 }
+
+@media only screen and (max-width: 450px) {
+  .login__navigation {
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}

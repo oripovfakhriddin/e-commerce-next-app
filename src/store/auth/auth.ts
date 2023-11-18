@@ -31,6 +31,11 @@ export interface UserInformationType {
   updatedAt: string;
   __v: number;
 }
+export interface UserPasswordType {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}
 
 interface LoginStoreType {
   token: string | null;
@@ -39,8 +44,14 @@ interface LoginStoreType {
   data: User | null;
   login: (loginData: LoginType | null, router: AppRouterInstance) => void;
   userRegister: (registerData: RegisterType, router: AppRouterInstance) => void;
-  changeUserInformation: (userData: UserInformationType, router: AppRouterInstance) => void;
-  // getUserInformation: () => void;
+  changeUserInformation: (
+    userData: UserInformationType,
+    router: AppRouterInstance
+  ) => void;
+  changeUserPassword: (
+    userPassword: UserPasswordType,
+    router: AppRouterInstance
+  ) => void;
 }
 
 const dataJson =
@@ -83,17 +94,46 @@ const useAuthStore = create<LoginStoreType>()((set, get) => ({
   changeUserInformation: async (userData, router) => {
     try {
       set({ loading: true });
-      const {data} = await request.put<UserInformationType>("auth/update", userData)
+      const { data } = await request.put<UserInformationType>(
+        "auth/update",
+        userData
+      );
       console.log(data);
-      
-      if(data) {
-        toast.success("Muvaffaqiyatli o'zgartirildi, Hisobingizga qaytadan kiring!")
-        router.push("/login")
+
+      if (data) {
+        toast.success(
+          "Ma'lumotlaringiz muvaffaqiyatli o'zgartirildi, Hisobingizga qaytadan kiring!"
+        );
+        router.push("/login");
       }
     } finally {
       set({ loading: false });
     }
-  }
+  },
+  changeUserPassword: async (userPassword, router) => {
+    try {
+      if (userPassword?.confirmPassword === userPassword?.newPassword) {
+        set({ loading: true });
+        const { data } = await request.put<UserInformationType>(
+          "auth/password",
+          {
+            currentPassword: userPassword?.currentPassword,
+            newPassword: userPassword?.newPassword,
+          }
+        );
+        if (data) {
+          toast.success(
+            "Parolingiz muvaffaqiyatli o'zgartirildi, Hisobingizga qaytadan kiring!"
+          );
+          router.push("/login");
+        }
+      } else {
+        toast.error("Tasdiqlash parolingizni tekshiring!!");
+      }
+    } finally {
+      set({ loading: false });
+    }
+  },
 }));
 
 export default useAuthStore;
