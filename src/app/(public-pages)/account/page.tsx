@@ -208,19 +208,19 @@ const PublicAccountPage = () => {
               </div>
             </div>
             <div className="log__out__box">
-                  <LoadingButton
-                    type="submit"
-                    loading={loading}
-                    loadingIndicator="Chiqmoqda..."
-                    onClick={handleOpenLogOutModal}
-                    variant="outlined"
-                    color="warning"
-                  >
-                    <span>Akkauntdan chiqish</span>
-                  </LoadingButton>
+              <LoadingButton
+                type="submit"
+                loading={loading}
+                loadingIndicator="Chiqmoqda..."
+                onClick={handleOpenLogOutModal}
+                variant="outlined"
+                color="warning"
+              >
+                <span>Akkauntdan chiqish</span>
+              </LoadingButton>
             </div>
-            
-              <Dialog
+
+            <Dialog
               open={openLogOutModal}
               TransitionComponent={Transition}
               keepMounted
@@ -246,7 +246,7 @@ const PublicAccountPage = () => {
                 </Button>
               </DialogActions>
             </Dialog>
-            
+
           </CustomTabPanel>
           <CustomTabPanel value={valueTab} index={1}>
             <div className="account__change__box">
