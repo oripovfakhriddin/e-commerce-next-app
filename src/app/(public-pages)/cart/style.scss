@@ -10,7 +10,7 @@
 
   .cart__card__box,
   .cart__payment__box {
-    border: 1px solid hsla(220, 4%, 48%, .2);
+    border: 1px solid hsla(220, 4%, 48%, 0.2);
     padding: 16px;
     border-radius: 10px;
   }
@@ -28,7 +28,7 @@
 
       p {
         margin-bottom: 10px;
-        color: #62656A;
+        color: #62656a;
         font-size: 18px;
         max-width: 310px;
       }
