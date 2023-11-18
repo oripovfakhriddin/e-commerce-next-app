@@ -97,7 +97,7 @@ const PublicOrdersLists = () => {
 
   return (
     <div className='orders__lists'>
-        {ordersData.length === 0 ? <h1 className='not__orders__title'>SIZDA BUYURTMALAR MAVJUD EMAS</h1>
+        {ordersLoading ? "Loading..." : ordersData.length === 0 ? <h1 className='not__orders__title'>SIZDA BUYURTMALAR MAVJUD EMAS</h1>
         :
         <TableContainer sx={{ maxHeight: 540 }} component={Paper}>
         <Table aria-label="collapsible table">

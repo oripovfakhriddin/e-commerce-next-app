@@ -56,6 +56,15 @@
   }
 }
 
+.log__out__box {
+  text-align: center;
+  margin-top: 30px;
+  button{
+    border-color: red;
+    color: red;
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .account__box {
     div {

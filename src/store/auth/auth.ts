@@ -43,6 +43,7 @@ interface LoginStoreType {
   isAuthenticated: boolean;
   data: User | null;
   login: (loginData: LoginType | null, router: AppRouterInstance) => void;
+  logOut: (router: AppRouterInstance) => void;
   userRegister: (registerData: RegisterType, router: AppRouterInstance) => void;
   changeUserInformation: (
     userData: UserInformationType,
@@ -78,6 +79,17 @@ const useAuthStore = create<LoginStoreType>()((set, get) => ({
       if (data.user.role === ROLES.USER) {
         router.push("/");
       }
+    } finally {
+      set({ loading: false });
+    }
+  },
+  logOut: async (router) => {
+    try {
+      set({ loading: true, isAuthenticated: false });
+      localStorage.removeItem(USER);
+      Cookies.remove(USER_ID);
+      Cookies.remove(TOKEN);
+      router.push("/login");
     } finally {
       set({ loading: false });
     }

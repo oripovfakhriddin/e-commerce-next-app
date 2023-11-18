@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment, forwardRef } from "react";
 import { useRouter } from "next/navigation";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -9,6 +9,11 @@ import Box from "@mui/material/Box";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import EditIcon from "@mui/icons-material/Edit";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
+import { Button, Dialog } from "@mui/material";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 import useAuthStore, {
   RegisterType,
   UserInformationType,
@@ -19,6 +24,17 @@ import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useForm } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import Slide from '@mui/material/Slide';
+import { TransitionProps } from '@mui/material/transitions';
+
+const Transition = forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement<any, any>;
+  },
+  ref: React.Ref<unknown>,
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 // import { Metadata } from "next";
 // export const metadata: Metadata = {
@@ -66,6 +82,7 @@ const PublicAccountPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [dataUser, setDataUser] = useState<UserInformationType | null>(null);
   const [dataPass, setDataPass] = useState<UserPasswordType | null>(null);
+  const [openLogOutModal, setOpenLogOutModal] = useState(false);
 
   const {
     register,
@@ -105,7 +122,21 @@ const PublicAccountPage = () => {
     loading,
     changeUserInformation,
     changeUserPassword,
+    logOut,
   } = useAuthStore();
+
+  const handleOpenLogOutModal = () => {
+    setOpenLogOutModal(true)
+  }
+
+  const handleCloseLogOutModal = () => {
+    setOpenLogOutModal(false)
+  }
+
+  const handleLogOut = () => {
+    logOut(router)
+    setOpenLogOutModal(false)
+  }
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -176,6 +207,46 @@ const PublicAccountPage = () => {
                 <h1>{data?.user?.phoneNumber}</h1>
               </div>
             </div>
+            <div className="log__out__box">
+                  <LoadingButton
+                    type="submit"
+                    loading={loading}
+                    loadingIndicator="Chiqmoqda..."
+                    onClick={handleOpenLogOutModal}
+                    variant="outlined"
+                    color="warning"
+                  >
+                    <span>Akkauntdan chiqish</span>
+                  </LoadingButton>
+            </div>
+            
+              <Dialog
+              open={openLogOutModal}
+              TransitionComponent={Transition}
+              keepMounted
+              onClose={handleCloseLogOutModal}
+              aria-describedby="Tasdiqlash uchun"
+            >
+              <DialogTitle className="dialog__ttle">
+                Tadiqlash uchun tugmalardan birini bosing!
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-slide-description">
+                  <p>
+                    Akkauntingizdan chiqmoqchimisiz?
+                  </p>
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button className="dialog__button" onClick={handleCloseLogOutModal}>
+                  Bekor qilish
+                </Button>
+                <Button className="dialog__button" onClick={handleLogOut}>
+                  Chiqish
+                </Button>
+              </DialogActions>
+            </Dialog>
+            
           </CustomTabPanel>
           <CustomTabPanel value={valueTab} index={1}>
             <div className="account__change__box">
