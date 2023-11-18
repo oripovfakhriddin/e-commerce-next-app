@@ -21,4 +21,4 @@ const useCreatePaymentStore = create<CreatePaymentStoreType>()((set, get) => ({
   },
 }));
 
-export default useCreatePaymentStore
+export default useCreatePaymentStore;

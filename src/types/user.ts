@@ -10,7 +10,7 @@ interface User {
     createdAt: string;
     updatedAt: string;
     __v: number;
-  }
+  };
 }
 
-export default User
+export default User;

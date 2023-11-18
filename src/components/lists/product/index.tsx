@@ -12,7 +12,6 @@ const PublicProductsList = () => {
 
   const { loading: productLoading, total, data: productData, getData: getProduct, setActivePage } = useProductsStore();
 
-
   useEffect(() => {
     getProduct()
   }, [getProduct])

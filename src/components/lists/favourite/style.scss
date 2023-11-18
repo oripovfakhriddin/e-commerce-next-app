@@ -3,14 +3,12 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
-
 @media only screen and (max-width: 1200px) {
   .favourite__row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 
 @media only screen and (max-width: 850px) {
   .favourite__row {
