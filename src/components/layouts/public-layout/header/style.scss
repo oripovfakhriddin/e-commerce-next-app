@@ -65,23 +65,23 @@
 }
 
 @media only screen and (max-width: 1100px) {
-  .ph__account__list__item a, .ph__nav__list__item a {
-    svg{
+  .ph__account__list__item a,
+  .ph__nav__list__item a {
+    svg {
       font-size: 24px !important;
     }
-    p{
+    p {
       font-size: 14px;
     }
   }
 }
 
-
 @media only screen and (max-width: 1050px) {
-  .ph__nav__list{
+  .ph__nav__list {
     gap: 5px !important;
   }
 
-  .ph__nav__box{
+  .ph__nav__box {
     gap: 10px !important;
   }
 }
@@ -94,32 +94,33 @@
 }
 
 @media only screen and (max-width: 950px) {
-  .ph__account__list__item a, .ph__nav__list__item a {
-    p{
+  .ph__account__list__item a,
+  .ph__nav__list__item a {
+    p {
       display: none;
     }
   }
 
-  .ph__account__list{
+  .ph__account__list {
     width: 35px;
   }
 }
 
 @media only screen and (max-width: 510px) {
-  .logo__title{
+  .logo__title {
     display: none;
   }
 
-  .ph__nav__box{
+  .ph__nav__box {
     max-width: 500px;
     width: 100%;
     display: flex;
     gap: 108px !important;
   }
 
-  .ph__account__list{
+  .ph__account__list {
     flex-direction: row !important;
-    .ph__account__list__item a{
+    .ph__account__list__item a {
       min-width: 30px !important;
       width: 35px;
     }
@@ -127,30 +128,30 @@
 }
 
 @media only screen and (max-width: 490px) {
-  .ph__nav__box{
+  .ph__nav__box {
     gap: 80px !important;
-}
+  }
 }
 
 @media only screen and (max-width: 425px) {
-  .ph__nav__box{
+  .ph__nav__box {
     gap: 60px !important;
-}
+  }
 }
 @media only screen and (max-width: 400px) {
-  .ph__nav__box{
+  .ph__nav__box {
     gap: 40px !important;
-}
+  }
 }
 
 @media only screen and (max-width: 380px) {
-  .ph__nav__box{
+  .ph__nav__box {
     gap: 20px !important;
-}
+  }
 }
 
 @media only screen and (max-width: 370px) {
-  .ph__nav__box{
+  .ph__nav__box {
     gap: 10px !important;
-}
+  }
 }
