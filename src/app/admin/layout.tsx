@@ -27,6 +27,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PeopleIcon from "@mui/icons-material/People";
 import NavLink from "@/components/shares/navlink";
 import Children from "@/types";
@@ -379,28 +380,36 @@ const AdminLayout = ({ children }: Children) => {
             </List>
             <Divider />
             <List>
-              <ListItem disablePadding sx={{ display: "block" }}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                    }}
+            <div>
+                <NavLink href="/admin/account">
+                  <ListItem
+                    key={"text"}
+                    disablePadding
+                    sx={{ display: "block" }}
                   >
-                    <InboxIcon />
-                  </ListItemIcon>
-                  <ListItemText sx={{ opacity: open ? 1 : 0 }}>
-                    Salom
-                  </ListItemText>
-                </ListItemButton>
-              </ListItem>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <AccountCircleIcon />
+                      </ListItemIcon>
+                      <ListItemText style={{color: "rgba(0, 0, 0, 0.54)"}} sx={{ opacity: open ? 1 : 0 }}>
+                        Hisobim
+                      </ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                </NavLink>
+              </div>
             </List>
           </Drawer>
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>

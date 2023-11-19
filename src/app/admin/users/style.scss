@@ -6,3 +6,16 @@
     justify-content: center;
     align-items: center;
   }
+
+
+  // .MuiTable-root{
+  //   overflow:hidden;
+  //     overflow-x:scroll;
+  //     width:200;
+  //     display:block;
+  // }
+
+
+  .MuiTableContainer-root{
+    overflow-x: auto !important;
+  }

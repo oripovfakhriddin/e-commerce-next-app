@@ -31,6 +31,7 @@ interface UsersStoreType {
   getData: () => void;
   searchData: (newSearch: string) => void;
   setActivePage: (newActicePage: number) => void;
+  setLimitPerPage: (limit: number)=>void;
   addData: (newData: RegisterType) => void;
   editData: (selected: string) => void;
   deleteData: (selected: string) => void;
@@ -69,6 +70,9 @@ const useUsersStore = create<UsersStoreType>()((set, get) => ({
     console.log(newActicePage);
     set({ activePage: newActicePage });
     get().getData();
+  },
+  setLimitPerPage: (limit) => {
+    set({limit})
   },
   addData: async (newData) => {
     try {
