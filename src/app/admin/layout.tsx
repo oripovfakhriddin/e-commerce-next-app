@@ -27,7 +27,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PeopleIcon from "@mui/icons-material/People";
 import NavLink from "@/components/shares/navlink";
 import Children from "@/types";
@@ -250,7 +250,10 @@ const AdminLayout = ({ children }: Children) => {
                       >
                         <DashboardIcon />
                       </ListItemIcon>
-                      <ListItemText style={{color: "rgba(0, 0, 0, 0.54)"}} sx={{ opacity: open ? 1 : 0 }}>
+                      <ListItemText
+                        style={{ color: "rgba(0, 0, 0, 0.54)" }}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      >
                         Dashboard
                       </ListItemText>
                     </ListItemButton>
@@ -280,7 +283,10 @@ const AdminLayout = ({ children }: Children) => {
                       >
                         <PeopleIcon />
                       </ListItemIcon>
-                      <ListItemText style={{color: "rgba(0, 0, 0, 0.54)"}} sx={{ opacity: open ? 1 : 0 }}>
+                      <ListItemText
+                        style={{ color: "rgba(0, 0, 0, 0.54)" }}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      >
                         Fodalanuvchilar
                       </ListItemText>
                     </ListItemButton>
@@ -310,7 +316,10 @@ const AdminLayout = ({ children }: Children) => {
                       >
                         <CategoryIcon />
                       </ListItemIcon>
-                      <ListItemText style={{color: "rgba(0, 0, 0, 0.54)"}} sx={{ opacity: open ? 1 : 0 }}>
+                      <ListItemText
+                        style={{ color: "rgba(0, 0, 0, 0.54)" }}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      >
                         Mahsulot turlari
                       </ListItemText>
                     </ListItemButton>
@@ -340,7 +349,10 @@ const AdminLayout = ({ children }: Children) => {
                       >
                         <ProductionQuantityLimitsIcon />
                       </ListItemIcon>
-                      <ListItemText style={{color: "rgba(0, 0, 0, 0.54)"}} sx={{ opacity: open ? 1 : 0 }}>
+                      <ListItemText
+                        style={{ color: "rgba(0, 0, 0, 0.54)" }}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      >
                         Mahsulotlar
                       </ListItemText>
                     </ListItemButton>
@@ -370,7 +382,10 @@ const AdminLayout = ({ children }: Children) => {
                       >
                         <PaymentsIcon />
                       </ListItemIcon>
-                      <ListItemText style={{color: "rgba(0, 0, 0, 0.54)"}} sx={{ opacity: open ? 1 : 0 }}>
+                      <ListItemText
+                        style={{ color: "rgba(0, 0, 0, 0.54)" }}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      >
                         To'lovlar
                       </ListItemText>
                     </ListItemButton>
@@ -380,7 +395,7 @@ const AdminLayout = ({ children }: Children) => {
             </List>
             <Divider />
             <List>
-            <div>
+              <div>
                 <NavLink href="/admin/account">
                   <ListItem
                     key={"text"}
@@ -403,7 +418,10 @@ const AdminLayout = ({ children }: Children) => {
                       >
                         <AccountCircleIcon />
                       </ListItemIcon>
-                      <ListItemText style={{color: "rgba(0, 0, 0, 0.54)"}} sx={{ opacity: open ? 1 : 0 }}>
+                      <ListItemText
+                        style={{ color: "rgba(0, 0, 0, 0.54)" }}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      >
                         Hisobim
                       </ListItemText>
                     </ListItemButton>
