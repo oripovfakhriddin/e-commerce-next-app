@@ -41,8 +41,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import Slide from '@mui/material/Slide';
-import { TransitionProps } from '@mui/material/transitions';
+import Slide from "@mui/material/Slide";
+import { TransitionProps } from "@mui/material/transitions";
 
 import "./style.scss";
 import { Badge } from "@mui/material";
@@ -133,14 +133,14 @@ const Transition = forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>;
   },
-  ref: React.Ref<unknown>,
+  ref: React.Ref<unknown>
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const AdminLayout = ({ children }: Children) => {
   const [open, setOpen] = useState(false);
-  const [logOutModal, setLogOutModal]=useState(false)
+  const [logOutModal, setLogOutModal] = useState(false);
   const router = useRouter();
 
   const { logOut } = useAuthStore();
@@ -154,201 +154,232 @@ const AdminLayout = ({ children }: Children) => {
   };
 
   const handleLogOutOpenModal = () => {
-    setLogOutModal(true)
-  }
+    setLogOutModal(true);
+  };
 
   const handleLogOutCloseModal = () => {
-    setLogOutModal(false)
-  }
+    setLogOutModal(false);
+  };
 
-  const handleLogOut = ( ) => {
-    logOut(router)
-  }
+  const handleLogOut = () => {
+    logOut(router);
+  };
 
   return (
-    <Fragment>    <ThemeProvider theme={theme}>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <AppBar position="fixed" open={open}>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={{
-                marginRight: 5,
-                ...(open && { display: "none" }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <div className="admin__header__box">
-              <Typography variant="h6" noWrap component="div">
-                Vodiy Parfum
-              </Typography>
-              <div>
-                <Badge className="notification" badgeContent={4} color="secondary">
-                  <IconButton color="info" onClick={handleLogOutOpenModal} aria-label="notification">
-                  <NotificationsIcon color="info" />
+    <Fragment>
+      <ThemeProvider theme={theme}>
+        <Box sx={{ display: "flex" }}>
+          <CssBaseline />
+          <AppBar position="fixed" open={open}>
+            <Toolbar>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                sx={{
+                  marginRight: 5,
+                  ...(open && { display: "none" }),
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <div className="admin__header__box">
+                <Typography variant="h6" noWrap component="div">
+                  Vodiy Parfum
+                </Typography>
+                <div>
+                  <Badge
+                    className="notification"
+                    badgeContent={4}
+                    color="secondary"
+                  >
+                    <IconButton
+                      color="info"
+                      onClick={handleLogOutOpenModal}
+                      aria-label="notification"
+                    >
+                      <NotificationsIcon color="info" />
+                    </IconButton>
+                  </Badge>
+                  <IconButton
+                    color="secondary"
+                    className="log__out__btn"
+                    onClick={handleLogOutOpenModal}
+                    aria-label="log out"
+                  >
+                    <ExitToAppIcon />
                   </IconButton>
-                </Badge>
-                
-                <IconButton color="secondary" className="log__out__btn" onClick={handleLogOutOpenModal} aria-label="log out">
-                  <ExitToAppIcon />
-                </IconButton>
-               
+                </div>
               </div>
-            </div>
-          </Toolbar>
-        </AppBar>
-        <Drawer variant="permanent" open={open}>
-          <DrawerHeader>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "rtl" ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )}
-            </IconButton>
-          </DrawerHeader>
-          <Divider />
-          <List>
-            <div>
-              <NavLink href="/admin">
-                <ListItem key={"text"} disablePadding sx={{ display: "block" }}>
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
+            </Toolbar>
+          </AppBar>
+          <Drawer variant="permanent" open={open}>
+            <DrawerHeader>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === "rtl" ? (
+                  <ChevronRightIcon />
+                ) : (
+                  <ChevronLeftIcon />
+                )}
+              </IconButton>
+            </DrawerHeader>
+            <Divider />
+            <List>
+              <div>
+                <NavLink href="/admin">
+                  <ListItem
+                    key={"text"}
+                    disablePadding
+                    sx={{ display: "block" }}
                   >
-                    <ListItemIcon
+                    <ListItemButton
                       sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
                       }}
                     >
-                      <DashboardIcon />
-                    </ListItemIcon>
-                    <ListItemText sx={{ opacity: open ? 1 : 0 }}>
-                      Dashboard
-                    </ListItemText>
-                  </ListItemButton>
-                </ListItem>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink href="/admin/users">
-                <ListItem key={"text"} disablePadding sx={{ display: "block" }}>
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <DashboardIcon />
+                      </ListItemIcon>
+                      <ListItemText style={{color: "rgba(0, 0, 0, 0.54)"}} sx={{ opacity: open ? 1 : 0 }}>
+                        Dashboard
+                      </ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                </NavLink>
+              </div>
+              <div>
+                <NavLink href="/admin/users">
+                  <ListItem
+                    key={"text"}
+                    disablePadding
+                    sx={{ display: "block" }}
                   >
-                    <ListItemIcon
+                    <ListItemButton
                       sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
                       }}
                     >
-                      <PeopleIcon />
-                    </ListItemIcon>
-                    <ListItemText sx={{ opacity: open ? 1 : 0 }}>
-                      Fodalanuvchilar
-                    </ListItemText>
-                  </ListItemButton>
-                </ListItem>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink href="/admin/category">
-                <ListItem key={"text"} disablePadding sx={{ display: "block" }}>
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <PeopleIcon />
+                      </ListItemIcon>
+                      <ListItemText style={{color: "rgba(0, 0, 0, 0.54)"}} sx={{ opacity: open ? 1 : 0 }}>
+                        Fodalanuvchilar
+                      </ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                </NavLink>
+              </div>
+              <div>
+                <NavLink href="/admin/category">
+                  <ListItem
+                    key={"text"}
+                    disablePadding
+                    sx={{ display: "block" }}
                   >
-                    <ListItemIcon
+                    <ListItemButton
                       sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
                       }}
                     >
-                      <CategoryIcon />
-                    </ListItemIcon>
-                    <ListItemText sx={{ opacity: open ? 1 : 0 }}>
-                      Mahsulot turlari
-                    </ListItemText>
-                  </ListItemButton>
-                </ListItem>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink href="/admin/products">
-                <ListItem key={"text"} disablePadding sx={{ display: "block" }}>
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <CategoryIcon />
+                      </ListItemIcon>
+                      <ListItemText style={{color: "rgba(0, 0, 0, 0.54)"}} sx={{ opacity: open ? 1 : 0 }}>
+                        Mahsulot turlari
+                      </ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                </NavLink>
+              </div>
+              <div>
+                <NavLink href="/admin/products">
+                  <ListItem
+                    key={"text"}
+                    disablePadding
+                    sx={{ display: "block" }}
                   >
-                    <ListItemIcon
+                    <ListItemButton
                       sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
                       }}
                     >
-                      <ProductionQuantityLimitsIcon />
-                    </ListItemIcon>
-                    <ListItemText sx={{ opacity: open ? 1 : 0 }}>
-                      Mahsulotlar
-                    </ListItemText>
-                  </ListItemButton>
-                </ListItem>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink href="/admin/payments">
-                <ListItem key={"text"} disablePadding sx={{ display: "block" }}>
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <ProductionQuantityLimitsIcon />
+                      </ListItemIcon>
+                      <ListItemText style={{color: "rgba(0, 0, 0, 0.54)"}} sx={{ opacity: open ? 1 : 0 }}>
+                        Mahsulotlar
+                      </ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                </NavLink>
+              </div>
+              <div>
+                <NavLink href="/admin/payments">
+                  <ListItem
+                    key={"text"}
+                    disablePadding
+                    sx={{ display: "block" }}
                   >
-                    <ListItemIcon
+                    <ListItemButton
                       sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
                       }}
                     >
-                      <PaymentsIcon />
-                    </ListItemIcon>
-                    <ListItemText sx={{ opacity: open ? 1 : 0 }}>
-                      To'lovlar
-                    </ListItemText>
-                  </ListItemButton>
-                </ListItem>
-              </NavLink>
-            </div>
-          </List>
-          <Divider />
-          <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-              <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <PaymentsIcon />
+                      </ListItemIcon>
+                      <ListItemText style={{color: "rgba(0, 0, 0, 0.54)"}} sx={{ opacity: open ? 1 : 0 }}>
+                        To'lovlar
+                      </ListItemText>
+                    </ListItemButton>
+                  </ListItem>
+                </NavLink>
+              </div>
+            </List>
+            <Divider />
+            <List>
+              <ListItem disablePadding sx={{ display: "block" }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -363,48 +394,56 @@ const AdminLayout = ({ children }: Children) => {
                       justifyContent: "center",
                     }}
                   >
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                    <InboxIcon />
                   </ListItemIcon>
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText sx={{ opacity: open ? 1 : 0 }}>
+                    Salom
+                  </ListItemText>
                 </ListItemButton>
               </ListItem>
-            ))}
-          </List>
-        </Drawer>
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <DrawerHeader />
-          {children}
+            </List>
+          </Drawer>
+          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <DrawerHeader />
+            {children}
+          </Box>
         </Box>
-      </Box>
-      <Dialog
-              open={logOutModal}
-              TransitionComponent={Transition}
-              keepMounted
-              onClose={handleLogOutCloseModal}
-              aria-describedby="Tasdiqlash uchun"
+        <Dialog
+          open={logOutModal}
+          TransitionComponent={Transition}
+          keepMounted
+          onClose={handleLogOutCloseModal}
+          aria-describedby="Tasdiqlash uchun"
+        >
+          <DialogTitle className="dialog__ttle">
+            Tadiqlash uchun tugmalardan birini bosing!
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              <p>Akkauntingizdan chiqmoqchimisiz?</p>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              className="dialog__button__first"
+              variant="contained"
+              color="info"
+              onClick={handleLogOutCloseModal}
             >
-              <DialogTitle className="dialog__ttle">
-                Tadiqlash uchun tugmalardan birini bosing!
-              </DialogTitle>
-              <DialogContent>
-                <DialogContentText id="alert-dialog-slide-description">
-                  <p>
-                    Akkauntingizdan chiqmoqchimisiz?
-                  </p>
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button className="dialog__button__first" variant="contained" color="info" onClick={handleLogOutCloseModal}>
-                  Bekor qilish
-                </Button>
-                <Button className="dialog__button" variant="contained" color="error" onClick={handleLogOut}>
-                  Chiqish
-                </Button>
-              </DialogActions>
-            </Dialog>
-    </ThemeProvider>
+              Bekor qilish
+            </Button>
+            <Button
+              className="dialog__button"
+              variant="contained"
+              color="error"
+              onClick={handleLogOut}
+            >
+              Chiqish
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </ThemeProvider>
     </Fragment>
-
   );
 };
 

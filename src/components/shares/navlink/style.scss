@@ -1,5 +1,8 @@
 .navlink__active {
   color: red !important;
+  .MuiListItemText-root{
+    color: red !important;
+  }
   svg {
     color: red;
   }
