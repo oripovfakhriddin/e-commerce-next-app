@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 
 const DashboardPage = () => {
   return (
-    <div>DashboardPage</div>
+    <Fragment>
+      <div>
+        
+      </div>
+    </Fragment>
   )
 }
 

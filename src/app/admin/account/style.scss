@@ -1,0 +1,97 @@
+.tabs__list {
+  .Mui-selected,
+  .MuiTabs-indicator {
+    color: orange !important;
+  }
+}
+.tabs__list {
+  .MuiTabs-indicator {
+    background-color: orange !important;
+  }
+}
+
+.account__box,
+.account__change__box,
+.account__change__password__box {
+  min-height: 200px;
+  h1 {
+    text-align: center;
+    color: orange;
+  }
+}
+.tabs__title {
+  text-align: center;
+  color: orange;
+}
+
+.account__box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.account__change__box {
+  .form__change {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 40px;
+  }
+}
+
+.account__change__password__box {
+  .password__change__form {
+    margin: 0 auto;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+  }
+}
+
+.log__out__box {
+  text-align: center;
+  margin-top: 30px;
+  button {
+    border-color: red;
+    color: red;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .account__box {
+    div {
+      flex-direction: column;
+    }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .account__box {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+  }
+  .MuiButtonBase-root{
+    p{
+        display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .tabs__list {
+    button {
+      font-size: 12px !important;
+      min-width: 50px !important;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+  }
+}

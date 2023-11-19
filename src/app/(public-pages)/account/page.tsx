@@ -36,13 +36,6 @@ const Transition = forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-// import { Metadata } from "next";
-// export const metadata: Metadata = {
-//   title: "VODIY PARFUM | HISOBIM",
-//   description:
-//     "VODIY PARFUME internet do'konidagi hisobim!",
-// };
-
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;

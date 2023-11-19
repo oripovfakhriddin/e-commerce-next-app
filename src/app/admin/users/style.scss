@@ -19,3 +19,26 @@
   .MuiTableContainer-root{
     overflow-x: auto !important;
   }
+
+
+  .admin__users__info{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    input {
+      &:onFocus{
+        max-width: 500px;
+        width: 100%;
+      }
+    }
+  }
+
+  .loading__box{
+    h1{
+      color: orange;
+    }
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
