@@ -1,22 +1,29 @@
 .admin__header__box {
-    width:100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  .log__out__btn{
+  .log__out__btn {
     margin-left: 10px;
     padding: 10px;
     border-radius: 50%;
   }
 }
 
-.dialog__button__first{
-    margin-right: 10px;
+.dialog__button__first {
+  margin-right: 10px;
 }
 
-.notification{
-    .MuiBadge-badge{
-        top: 5px !important;
-    }
+.notification {
+  .MuiBadge-badge {
+    top: 5px !important;
+  }
+}
+
+.dashboard__title__box {
+  text-align: center;
+  h1{
+    background-color: orange;
+  }
 }

@@ -18,6 +18,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import "./style.scss";
 import PublicOrdersType from "@/types/public-orders";
 import { trueDate } from "@/utils/sum";
+import Loading from "@/app/loading";
 
 function Row({ row, i }: { row: PublicOrdersType } & { i: number }) {
   const [open, setOpen] = React.useState(false);
@@ -141,9 +142,9 @@ const PublicOrdersLists = () => {
 
   return (
     <div className="orders__lists">
-      {ordersLoading ? (
-        "Loading..."
-      ) : ordersData.length === 0 ? (
+      {ordersLoading ? 
+        <Loading />
+      : ordersData.length === 0 ? (
         <h1 className="not__orders__title">SIZDA BUYURTMALAR MAVJUD EMAS</h1>
       ) : (
         <TableContainer sx={{ maxHeight: 540 }} component={Paper}>

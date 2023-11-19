@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState, forwardRef } from "react";
+import { Fragment, useState, forwardRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   styled,
@@ -48,6 +48,7 @@ import { TransitionProps } from "@mui/material/transitions";
 import "./style.scss";
 import { Badge } from "@mui/material";
 import useAuthStore from "@/store/auth/auth";
+import ROLES from "@/types/roles";
 
 const drawerWidth = 240;
 
@@ -144,7 +145,13 @@ const AdminLayout = ({ children }: Children) => {
   const [logOutModal, setLogOutModal] = useState(false);
   const router = useRouter();
 
-  const { logOut } = useAuthStore();
+  const { logOut, isAuthenticated, data } = useAuthStore();
+
+  useEffect(() => {
+    if (!isAuthenticated || data?.user?.role !== ROLES.ADMIN) {
+      router.push("/login");
+    }
+  }, [isAuthenticated, data?.user?.role, data?.user, data]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
