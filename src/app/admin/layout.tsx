@@ -1,6 +1,7 @@
 "use client";
 
-import * as React from "react";
+import { Fragment, useState, forwardRef } from "react";
+import { useRouter } from "next/navigation";
 import {
   styled,
   Theme,
@@ -33,6 +34,19 @@ import CategoryIcon from "@mui/icons-material/Category";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { Button, Dialog } from "@mui/material";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Slide from '@mui/material/Slide';
+import { TransitionProps } from '@mui/material/transitions';
+
+import "./style.scss";
+import { Badge } from "@mui/material";
+import useAuthStore from "@/store/auth/auth";
 
 const drawerWidth = 240;
 
@@ -40,6 +54,9 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#ffa500",
+    },
+    secondary: {
+      main: "#ff0000",
     },
   },
 });
@@ -112,8 +129,21 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
+const Transition = forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement<any, any>;
+  },
+  ref: React.Ref<unknown>,
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 const AdminLayout = ({ children }: Children) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [logOutModal, setLogOutModal]=useState(false)
+  const router = useRouter();
+
+  const { logOut } = useAuthStore();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -123,8 +153,20 @@ const AdminLayout = ({ children }: Children) => {
     setOpen(false);
   };
 
+  const handleLogOutOpenModal = () => {
+    setLogOutModal(true)
+  }
+
+  const handleLogOutCloseModal = () => {
+    setLogOutModal(false)
+  }
+
+  const handleLogOut = ( ) => {
+    logOut(router)
+  }
+
   return (
-    <ThemeProvider theme={theme}>
+    <Fragment>    <ThemeProvider theme={theme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <AppBar position="fixed" open={open}>
@@ -141,10 +183,22 @@ const AdminLayout = ({ children }: Children) => {
             >
               <MenuIcon />
             </IconButton>
-            <div>
+            <div className="admin__header__box">
               <Typography variant="h6" noWrap component="div">
-                Mini variant drawer
+                Vodiy Parfum
               </Typography>
+              <div>
+                <Badge className="notification" badgeContent={4} color="secondary">
+                  <IconButton color="info" onClick={handleLogOutOpenModal} aria-label="notification">
+                  <NotificationsIcon color="info" />
+                  </IconButton>
+                </Badge>
+                
+                <IconButton color="secondary" className="log__out__btn" onClick={handleLogOutOpenModal} aria-label="log out">
+                  <ExitToAppIcon />
+                </IconButton>
+               
+              </div>
             </div>
           </Toolbar>
         </AppBar>
@@ -322,7 +376,35 @@ const AdminLayout = ({ children }: Children) => {
           {children}
         </Box>
       </Box>
+      <Dialog
+              open={logOutModal}
+              TransitionComponent={Transition}
+              keepMounted
+              onClose={handleLogOutCloseModal}
+              aria-describedby="Tasdiqlash uchun"
+            >
+              <DialogTitle className="dialog__ttle">
+                Tadiqlash uchun tugmalardan birini bosing!
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-slide-description">
+                  <p>
+                    Akkauntingizdan chiqmoqchimisiz?
+                  </p>
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button className="dialog__button__first" variant="contained" color="info" onClick={handleLogOutCloseModal}>
+                  Bekor qilish
+                </Button>
+                <Button className="dialog__button" variant="contained" color="error" onClick={handleLogOut}>
+                  Chiqish
+                </Button>
+              </DialogActions>
+            </Dialog>
     </ThemeProvider>
+    </Fragment>
+
   );
 };
 
