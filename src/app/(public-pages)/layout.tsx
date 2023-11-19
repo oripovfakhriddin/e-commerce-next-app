@@ -1,8 +1,8 @@
-import { Fragment } from "react"
+import { Fragment } from "react";
 
-import PublicFooter from "@/components/layouts/public-layout/footer/footer"
-import PublicHeader from "@/components/layouts/public-layout/header/header"
-import Children from '@/types'
+import PublicFooter from "@/components/layouts/public-layout/footer/footer";
+import PublicHeader from "@/components/layouts/public-layout/header/header";
+import Children from "@/types";
 
 const PublicLayout = ({ children }: Children) => {
   return (
@@ -10,7 +10,8 @@ const PublicLayout = ({ children }: Children) => {
       <PublicHeader />
       <main>{children}</main>
       <PublicFooter />
-    </Fragment>)
-}
+    </Fragment>
+  );
+};
 
 export default PublicLayout;
