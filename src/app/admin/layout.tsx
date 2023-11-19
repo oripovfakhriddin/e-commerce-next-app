@@ -30,9 +30,9 @@ import PeopleIcon from "@mui/icons-material/People";
 import NavLink from "@/components/shares/navlink";
 import Children from "@/types";
 import CategoryIcon from "@mui/icons-material/Category";
-import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
-import PaymentsIcon from '@mui/icons-material/Payments';
-import DashboardIcon from '@mui/icons-material/Dashboard';
+import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
+import PaymentsIcon from "@mui/icons-material/Payments";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
 const drawerWidth = 240;
 
