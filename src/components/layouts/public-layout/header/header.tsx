@@ -50,9 +50,11 @@ const PublicHeader = () => {
     <Fragment>
       <header id="pp__header">
         <div className="container header__container">
-          <div>
-            <h1>Fakhriddin</h1>
-          </div>
+          <NavLink href="/">
+            <div className="logo__title">
+              <h1>Fakhriddin</h1>
+            </div>
+          </NavLink>
           <div className="ph__nav__box">
             <nav>
               <ul className="ph__nav__list">

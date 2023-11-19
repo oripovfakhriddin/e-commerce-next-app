@@ -4,8 +4,6 @@ import { create } from "zustand";
 import { RegisterType } from "../auth/auth";
 import Category from "@/types/category";
 
-
-
 interface CategoryStoreType {
   loading: boolean;
   search: string;
@@ -40,9 +38,7 @@ const useCategoryStore = create<CategoryStoreType>()((set, get) => ({
         page: activePage,
         limit,
       };
-      const {
-        data,
-      } = await request.get<Category[]>("category", { params });
+      const { data } = await request.get<Category[]>("category", { params });
       set({ data, total: data.length });
     } finally {
       set({ loading: false });
