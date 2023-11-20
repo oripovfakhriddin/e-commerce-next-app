@@ -1,6 +1,6 @@
 interface photoData {
-    url: string;
-    _id: string;
+    url: string | undefined;
+    _id: string | undefined;
   }
   
   export default photoData;

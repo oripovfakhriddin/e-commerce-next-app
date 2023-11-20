@@ -49,11 +49,11 @@ function Row({
         <TableCell align="center">{trueDate(row.createdAt)}</TableCell>
         <TableCell align="center">
           {row.status === "ACCEPTED" ? (
-            <p className="qabul__qilindi">Qabul qilindi</p>
+            <p className="qabul__qilindi">Qabul qilinmagan</p>
           ) : row.status === "CANCELED" ? (
             <p className="bekor__qilingan">Bekor qilingan</p>
           ) : (
-            <p className="yetkazilgan">Yetkazilgan</p>
+            <p className="yetkazilgan">Qabul qilingan</p>
           )}
         </TableCell>
         <TableCell align="center">
@@ -65,7 +65,32 @@ function Row({
         </TableCell>
         <TableCell align="center">{row.cart.length}</TableCell>
         <TableCell align="right">
-          <div>
+          {
+            row?.status === "ACCEPTED" ?
+            <div>
+              <Button
+                onClick={() => {
+                  editData(row?._id);
+                }}
+                variant="contained"
+                style={{ marginRight: "10px" }}
+                color="success"
+                disabled={loading}
+              >
+                Qabul qilish
+              </Button>
+              <Button
+                onClick={() => {
+                  deleteData(row?._id);
+                }}
+                variant="contained"
+                color="error"
+                disabled={loading}
+              >
+                Bekor qilish
+              </Button>
+            </div>
+            : row?.status === "SUCCESS" ?   <div>
             <Button
               onClick={() => {
                 editData(row?._id);
@@ -73,7 +98,7 @@ function Row({
               variant="contained"
               style={{ marginRight: "10px" }}
               color="success"
-              disabled={loading}
+              disabled
             >
               Qabul qilish
             </Button>
@@ -87,7 +112,32 @@ function Row({
             >
               Bekor qilish
             </Button>
-          </div>
+          </div>  :
+           <div>
+           <Button
+             onClick={() => {
+               editData(row?._id);
+             }}
+             variant="contained"
+             style={{ marginRight: "10px" }}
+             color="success"
+             disabled
+           >
+             Qabul qilish
+           </Button>
+           <Button
+             onClick={() => {
+               deleteData(row?._id);
+             }}
+             variant="contained"
+             color="error"
+             disabled
+           >
+             Bekor qilish
+           </Button>
+         </div>
+          }
+          
         </TableCell>
       </TableRow>
       <TableRow hover>
