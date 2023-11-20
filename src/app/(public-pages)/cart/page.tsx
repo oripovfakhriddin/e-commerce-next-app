@@ -24,9 +24,10 @@ const PublicCartPage = () => {
           <h1 className="payment__box__title">To'lov ma'lumotlari</h1>
           <div className="address__info__box">
             <p>
-              <b>Buyurtmangizni rasmiy topshirish</b> punktiga bepul yetkazib beramiz.
+              <b>Buyurtmangizni rasmiy topshirish</b> punktiga bepul yetkazib
+              beramiz.
             </p>
-            <p> Eshikkacha yetkazib berishgacha yana 823 000 so'm!</p>
+            <p> Eshikkacha yetkazib berishgacha yana 100 000 so'm!</p>
             <hr />
           </div>
           <div className="total__price__payment__box">

@@ -24,14 +24,14 @@ import { IconButton, InputAdornment, TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useForm } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import Slide from '@mui/material/Slide';
-import { TransitionProps } from '@mui/material/transitions';
+import Slide from "@mui/material/Slide";
+import { TransitionProps } from "@mui/material/transitions";
 
 const Transition = forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>;
   },
-  ref: React.Ref<unknown>,
+  ref: React.Ref<unknown>
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -119,17 +119,17 @@ const PublicAccountPage = () => {
   } = useAuthStore();
 
   const handleOpenLogOutModal = () => {
-    setOpenLogOutModal(true)
-  }
+    setOpenLogOutModal(true);
+  };
 
   const handleCloseLogOutModal = () => {
-    setOpenLogOutModal(false)
-  }
+    setOpenLogOutModal(false);
+  };
 
   const handleLogOut = () => {
-    logOut(router)
-    setOpenLogOutModal(false)
-  }
+    logOut(router);
+    setOpenLogOutModal(false);
+  };
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -225,13 +225,14 @@ const PublicAccountPage = () => {
               </DialogTitle>
               <DialogContent>
                 <DialogContentText id="alert-dialog-slide-description">
-                  <p>
-                    Akkauntingizdan chiqmoqchimisiz?
-                  </p>
+                  <p>Akkauntingizdan chiqmoqchimisiz?</p>
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
-                <Button className="dialog__button" onClick={handleCloseLogOutModal}>
+                <Button
+                  className="dialog__button"
+                  onClick={handleCloseLogOutModal}
+                >
                   Bekor qilish
                 </Button>
                 <Button className="dialog__button" onClick={handleLogOut}>
@@ -239,7 +240,6 @@ const PublicAccountPage = () => {
                 </Button>
               </DialogActions>
             </Dialog>
-
           </CustomTabPanel>
           <CustomTabPanel value={valueTab} index={1}>
             <div className="account__change__box">

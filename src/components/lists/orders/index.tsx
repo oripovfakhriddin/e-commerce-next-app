@@ -17,7 +17,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import "./style.scss";
 import PublicOrdersType from "@/types/public-orders";
-import { trueDate } from "@/utils/sum";
+import { trueDate } from "@/utils/custom-date";
 import Loading from "@/app/loading";
 
 function Row({ row, i }: { row: PublicOrdersType } & { i: number }) {
@@ -142,9 +142,9 @@ const PublicOrdersLists = () => {
 
   return (
     <div className="orders__lists">
-      {ordersLoading ? 
+      {ordersLoading ? (
         <Loading />
-      : ordersData.length === 0 ? (
+      ) : ordersData.length === 0 ? (
         <h1 className="not__orders__title">SIZDA BUYURTMALAR MAVJUD EMAS</h1>
       ) : (
         <TableContainer sx={{ maxHeight: 540 }} component={Paper}>

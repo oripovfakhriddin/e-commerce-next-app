@@ -20,9 +20,17 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { trueDate } from "@/utils/sum";
+import { trueDate } from "@/utils/custom-date";
 
-function Row({ row, i, loading, editData, deleteData }: { row: PaymentData } & { i: number } & {loading: boolean} & {editData: Function} & {deleteData: Function} ) {
+function Row({
+  row,
+  i,
+  loading,
+  editData,
+  deleteData,
+}: { row: PaymentData } & { i: number } & { loading: boolean } & {
+  editData: Function;
+} & { deleteData: Function }) {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -58,8 +66,27 @@ function Row({ row, i, loading, editData, deleteData }: { row: PaymentData } & {
         <TableCell align="center">{row.cart.length}</TableCell>
         <TableCell align="right">
           <div>
-            <Button onClick={()=>{editData(row?._id)}} variant="contained" style={{marginRight: "10px"}} color="success" disabled={loading}>Qabul qilish</Button>
-            <Button onClick={()=>{deleteData(row?._id)}} variant="contained" color="error" disabled={loading}>Bekor qilish</Button>
+            <Button
+              onClick={() => {
+                editData(row?._id);
+              }}
+              variant="contained"
+              style={{ marginRight: "10px" }}
+              color="success"
+              disabled={loading}
+            >
+              Qabul qilish
+            </Button>
+            <Button
+              onClick={() => {
+                deleteData(row?._id);
+              }}
+              variant="contained"
+              color="error"
+              disabled={loading}
+            >
+              Bekor qilish
+            </Button>
           </div>
         </TableCell>
       </TableRow>
@@ -98,7 +125,7 @@ function Row({ row, i, loading, editData, deleteData }: { row: PaymentData } & {
                         )}
                       </TableCell>
                       <TableCell align="center">
-                          <p className="bekor__qilingan">Ma'lumot topilmadi!</p>
+                        <p className="bekor__qilingan">Ma'lumot topilmadi!</p>
                       </TableCell>
                     </TableRow>
                   ))}
@@ -159,7 +186,14 @@ const AdminPaymentsPage = () => {
             </TableHead>
             {ordersData?.map((el, i) => (
               <TableBody>
-                <Row key={el?._id} row={el} i={i} loading={ordersLoading} editData={editData} deleteData={deleteData}/>
+                <Row
+                  key={el?._id}
+                  row={el}
+                  i={i}
+                  loading={ordersLoading}
+                  editData={editData}
+                  deleteData={deleteData}
+                />
               </TableBody>
             ))}
           </Table>

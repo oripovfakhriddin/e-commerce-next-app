@@ -38,7 +38,7 @@ const PublicAboutPage = () => {
             dolores quam labore. Eveniet dignissimos, quam doloribus at
             reprehenderit, neque culpa dicta perferendis architecto dolore ad,
             cupiditate earum consequatur minima sunt fugit amet dolores
-            explicabo sequi voluptatum ab quisquam! 
+            explicabo sequi voluptatum ab quisquam!
           </div>
         </div>
       </section>

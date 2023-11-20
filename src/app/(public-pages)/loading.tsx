@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-import "./loading.scss"
+import "./loading.scss";
 
 const LoadingPage = () => {
   return (
@@ -16,7 +16,7 @@ const LoadingPage = () => {
       <div className="wave"></div>
       <div className="wave"></div>
     </div>
-  )
-}
+  );
+};
 
-export default LoadingPage
+export default LoadingPage;

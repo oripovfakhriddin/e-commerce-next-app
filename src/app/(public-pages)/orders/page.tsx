@@ -14,7 +14,9 @@ const PublicOrdersPage = () => {
     <Fragment>
       <section id="public__orders">
         <div className="container orders__container">
-          <div className="orders__page__title__box"><h1>Buyurtmalarim</h1></div>
+          <div className="orders__page__title__box">
+            <h1>Buyurtmalarim</h1>
+          </div>
           <PublicOrdersLists />
         </div>
       </section>

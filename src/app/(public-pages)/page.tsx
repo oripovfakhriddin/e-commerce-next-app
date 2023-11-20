@@ -1,20 +1,17 @@
-
-
-import { Fragment, useEffect } from "react"
-import ProductLatest from "@/components/lists/product-latest"
-import CategoryList from "@/components/lists/category"
-import NavLink from "@/components/shares/navlink"
-import Button from "@mui/material/Button"
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import "./style.scss"
+import { Fragment, useEffect } from "react";
+import ProductLatest from "@/components/lists/product-latest";
+import CategoryList from "@/components/lists/category";
+import NavLink from "@/components/shares/navlink";
+import Button from "@mui/material/Button";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import "./style.scss";
 
 const PublicHomePage = () => {
-
   return (
     <Fragment>
       <section id="latest__products">
         <div className="container product__latest__container">
-          <h1 className="" >Eng oxirgi mahsulotlar</h1>
+          <h1 className="">Eng oxirgi mahsulotlar</h1>
           <Button variant="text" endIcon={<NavigateNextIcon />}>
             <NavLink href="/all-products">
               <p>Barcha mahsulotlar</p>
@@ -35,7 +32,7 @@ const PublicHomePage = () => {
         <CategoryList />
       </section>
     </Fragment>
-  )
-}
+  );
+};
 
-export default PublicHomePage
+export default PublicHomePage;

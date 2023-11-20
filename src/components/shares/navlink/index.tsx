@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 import Children from "@/types";
 
-import "./style.scss"
+import "./style.scss";
 
 const NavLink = ({ href, children }: { href: string } & Children) => {
   const pathname = usePathname();

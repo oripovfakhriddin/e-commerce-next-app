@@ -15,7 +15,7 @@ const useOrdersUserStore = create<OrdersUserStoreType>()((set, get) => ({
     try {
       set({ loading: true });
       const { data } = await request.get<PublicOrdersType[]>("auth/payments");
-      set({data})
+      set({ data });
     } finally {
       set({ loading: false });
     }

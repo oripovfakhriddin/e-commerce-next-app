@@ -12,9 +12,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import Link from "next/link";
 import "./style.scss";
 
-
 const RegisterForm = () => {
-
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [dataUser, setDataUser] = useState<RegisterType | null>(null);

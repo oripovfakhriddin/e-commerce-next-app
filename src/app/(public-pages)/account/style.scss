@@ -1,9 +1,11 @@
 .tabs__list {
+
   .Mui-selected,
   .MuiTabs-indicator {
     color: orange !important;
   }
 }
+
 .tabs__list {
   .MuiTabs-indicator {
     background-color: orange !important;
@@ -14,11 +16,13 @@
 .account__change__box,
 .account__change__password__box {
   min-height: 200px;
+
   h1 {
     text-align: center;
     color: orange;
   }
 }
+
 .tabs__title {
   text-align: center;
   color: orange;
@@ -27,6 +31,7 @@
 .account__box {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
   div {
     display: flex;
     align-items: center;
@@ -59,6 +64,7 @@
 .log__out__box {
   text-align: center;
   margin-top: 30px;
+
   button {
     border-color: red;
     color: red;

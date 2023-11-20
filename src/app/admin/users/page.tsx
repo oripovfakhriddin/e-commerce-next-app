@@ -18,7 +18,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { Box, Button, Modal, TextField } from "@mui/material";
 import "./style.scss";
-import { trueDate } from "@/utils/sum";
+import { trueDate } from "@/utils/custom-date";
 import { useForm } from "react-hook-form";
 import UseFormInputs from "@/types/formInputs";
 

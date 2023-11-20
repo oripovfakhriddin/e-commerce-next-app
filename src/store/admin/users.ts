@@ -7,7 +7,6 @@ import photoData from "@/types/photo";
 import { UseFormReset } from "react-hook-form";
 import { SetStateAction } from "react";
 
-
 interface User {
   role: number;
   _id: string;
@@ -30,7 +29,7 @@ interface UsersStoreType {
   search: string;
   activePage: number;
   limit: number;
-  photo: photoData | null
+  photo: photoData | null;
   data: User[];
   total: number;
   photoLoad: boolean;
@@ -38,14 +37,14 @@ interface UsersStoreType {
   isModalOpen: boolean;
   isModalLoad: boolean;
   closeModal: () => void;
-    showModal: (
-      reset: UseFormReset<UseFormInputs>,
-      setCategory: React.Dispatch<SetStateAction<string>>,
-    ) => void;
+  showModal: (
+    reset: UseFormReset<UseFormInputs>,
+    setCategory: React.Dispatch<SetStateAction<string>>
+  ) => void;
   getData: () => void;
   searchData: (newSearch: string) => void;
   setActivePage: (newActicePage: number) => void;
-  setLimitPerPage: (limit: number)=>void;
+  setLimitPerPage: (limit: number) => void;
   addData: (newData: RegisterType, selected: string | null) => void;
   editData: (selected: string, reset: UseFormReset<UseFormInputs>) => void;
   deleteData: (selected: string) => void;
@@ -66,29 +65,29 @@ const useUsersStore = create<UsersStoreType>()((set, get) => ({
   },
   selected: null,
   isModalOpen: false,
-      isModalLoad: false,
-      closeModal: () => {
-        set({ isModalOpen: false, photo: null });
+  isModalLoad: false,
+  closeModal: () => {
+    set({ isModalOpen: false, photo: null });
+  },
+  showModal: (reset, setCategory) => {
+    set({ isModalOpen: true, selected: null, photo: null });
+    reset({
+      firstName: "",
+      lastName: "",
+      username: "",
+      phoneNumber: "",
+      password: "",
+      category: "",
+      title: "",
+      price: "",
+      image: {
+        url: "",
+        _id: "",
       },
-      showModal: (reset, setCategory) => {
-        set({ isModalOpen: true, selected: null, photo: null });
-        reset({
-          firstName: "",
-          lastName: "",
-          username: "",
-          phoneNumber: "",
-          password: "",
-          category: "",
-          title: "",
-          price: "",
-          image: {
-            url: "",
-            _id: "",
-          },
-          quantity: "",
-        });
-        setCategory("");
-      },
+      quantity: "",
+    });
+    setCategory("");
+  },
   getData: async () => {
     try {
       const { search, activePage, limit } = get();
@@ -116,30 +115,29 @@ const useUsersStore = create<UsersStoreType>()((set, get) => ({
     get().getData();
   },
   setLimitPerPage: (limit) => {
-    set({limit})
+    set({ limit });
   },
   addData: async (newData, selected) => {
     try {
       set({ isModalLoad: true });
-      if(selected===null){
+      if (selected === null) {
         await request.post("user", newData);
       } else {
         await request.put(`user/${selected}`, newData);
       }
       const { getData } = get();
       set({ isModalOpen: false });
-      getData()
+      getData();
     } finally {
       set({ isModalLoad: false });
     }
   },
   editData: async (selected, reset) => {
-    
     try {
-      set({selected, loading: true, isModalOpen: true });
+      set({ selected, loading: true, isModalOpen: true });
       const { data } = await request.get<User>(`user/${selected}`);
       // set({image: data?.image})
-      reset(data)
+      reset(data);
     } finally {
       set({ loading: false });
     }

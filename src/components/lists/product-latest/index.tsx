@@ -1,15 +1,20 @@
-"use client"
+"use client";
 
-import useLatestProductsStore from "@/store/public/latest-products"
+import useLatestProductsStore from "@/store/public/latest-products";
 import { useEffect } from "react";
-import "./style.scss"
+import "./style.scss";
 import Slider from "react-slick";
 import PublicProductsCard from "@/components/cards/public/products";
 const ProductLatest = () => {
+  const {
+    latestProducts,
+    loading: latestProductLoading,
+    getLatestProducts,
+  } = useLatestProductsStore();
 
-  const { latestProducts, loading: latestProductLoading, getLatestProducts } = useLatestProductsStore();
-
-  useEffect(() => { getLatestProducts() }, [getLatestProducts])
+  useEffect(() => {
+    getLatestProducts();
+  }, [getLatestProducts]);
 
   const settings = {
     dots: false,
@@ -29,34 +34,38 @@ const ProductLatest = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 900,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
+          initialSlide: 2,
+        },
       },
       {
         breakpoint: 580,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
     <div className="container product__latest">
       <Slider {...settings}>
-        {latestProducts?.map((pr, index) => <div key={index}><PublicProductsCard data={pr} loading={latestProductLoading} /></div>)}
+        {latestProducts?.map((pr, index) => (
+          <div key={index}>
+            <PublicProductsCard data={pr} loading={latestProductLoading} />
+          </div>
+        ))}
       </Slider>
     </div>
-  )
-}
+  );
+};
 
 export default ProductLatest;

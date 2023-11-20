@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Metadata } from "next";
 import LoginForm from "@/components/forms/login";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
-import "./style.scss"
+import "./style.scss";
 
 export const metadata: Metadata = {
   title: "VODIY PARFUM | KIRISH",
