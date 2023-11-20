@@ -1,0 +1,39 @@
+#about {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.about__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  .img__box {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    height: 600px;
+  }
+  .text {
+    max-width: 600px;
+    width: 100%;
+    h1 {
+      text-align: center;
+    }
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  .about__container {
+    flex-direction: column;
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+    .about__container {
+        .img__box {
+            height: 400px;
+        }
+    }
+}
